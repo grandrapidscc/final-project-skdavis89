@@ -49,8 +49,13 @@ Console.WriteLine(map.GetValue(1,0));
 //Console.WriteLine(playerPosition);
 
 Dungeon layout = new Dungeon();
-layout.CreateMap();
-
+//layout.CreateMap();
+Console.WriteLine("testing print map");
+//layout.PrintMap();
+layout.SetPlayerPosition();
+layout.PrintMap();
+layout.MoveDirection("d");
+layout.PrintMap();
 
 
 
