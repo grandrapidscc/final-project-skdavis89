@@ -48,6 +48,9 @@ playerPosition = map[xCoord--, yCoord];
 Console.WriteLine(map.GetValue(1,0));
 //Console.WriteLine(playerPosition);
 
+Dungeon layout = new Dungeon();
+layout.CreateMap();
+
 
 
 
