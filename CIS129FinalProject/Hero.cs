@@ -14,6 +14,8 @@ namespace CIS129FinalProject
         private int _maxMP;
         private int currentHP;
         private int currentMP;
+        private int xCoord;
+        private int yCoord;
 
         public Hero(string name, string type, int hp, int mp)
         {
@@ -96,5 +98,15 @@ namespace CIS129FinalProject
             }
         } 
 
+        
+        public void Move(string direction)
+        {
+            if (direction == "s")
+            {
+
+            }
+        }
     }
+
+
 }

@@ -1,61 +1,41 @@
 ﻿using CIS129FinalProject;
 
 Hero Wizert = new Hero("Wizert", "Wizert", 100, 200);
+Monster goblin1 = new Monster("Gobs", "Goblin", false, "NW");
+Monster banshee1 = new Monster("Banz", "Banshee", false, "NW");
+Monster orc1 = new Monster("Orcy", "Orc", false, "NW");
+
+goblin1.Attack();
+banshee1.Attack();
+orc1.Attack();
 
 Wizert.CastFireball();
 Wizert.CastFireball();
 Wizert.CastHeal();
-
-int[,] map = new int[5, 5]
-{
-    {1, 2, 3, 4, 5 },
-    {6, 7, 8, 9, 10 },
-    {11, 12, 13, 14, 15},
-    {16, 17, 18, 19, 20},
-    {21, 22, 23, 24, 25},
-};
+Console.WriteLine();
 
 
-////x = row, y = column
-//Console.WriteLine(map.GetValue(3, 1));
 
-//int[,] map = new int[5, 5]
-//{
-//    {1, 0, 0, 0, 0},
-//    {0, 0, 0, 0, 0},
-//    {0, 0, 0, 0, 0},
-//    {0, 0, 0, 0, 0},
-//    {0, 0, 0, 0, 0},
-//};
+object[,] testMap = new object[7, 7];
 
-int xCoord = 0;
-int yCoord = 0;
-var playerPosition = map[xCoord, yCoord];
-Console.WriteLine("Starting upperleft most:");
-Console.WriteLine(map.GetValue(0,0));
-playerPosition = map[xCoord, yCoord++];
-Console.WriteLine("move east, new location:");
-Console.WriteLine(map.GetValue(0, 1));
-Console.WriteLine("original location:");
-Console.WriteLine(map.GetValue(0, 0));
-Console.WriteLine("move south, new location:");
-playerPosition = map[xCoord++, yCoord];
-Console.WriteLine(map.GetValue(1,1));
-Console.WriteLine("last value: ");
-Console.WriteLine(map.GetValue(0,1));
-Console.WriteLine("move west");
-playerPosition = map[xCoord--, yCoord];
-Console.WriteLine(map.GetValue(1,0));
-//Console.WriteLine(playerPosition);
 
-Dungeon layout = new Dungeon();
-//layout.CreateMap();
-Console.WriteLine("testing print map");
-//layout.PrintMap();
-layout.SetPlayerPosition();
-layout.PrintMap();
-layout.MoveDirection("d");
-layout.PrintMap();
+
+
+Map floorPlan = new Map();
+
+floorPlan.PopulateMap(testMap);
+floorPlan.SpawnExitRandomly(testMap);
+floorPlan.SpawnPlayerRandomly(testMap);
+floorPlan.PrintMap(testMap);
+Console.WriteLine("--------------------");
+Console.WriteLine(floorPlan.PlayerX_Coord());
+Console.WriteLine(floorPlan.PlayerY_Coord());
+
+
+
+
+
+
 
 
 
