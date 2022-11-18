@@ -6,16 +6,44 @@ using System.Threading.Tasks;
 
 namespace CIS129FinalProject
 {
+
     public class Hero
     {
+        int wizertX_Coord;
+        int wizertY_Coord;
         private string _name;
         private string _type;
         private int _maxHP;
         private int _maxMP;
-        private int currentHP;
+        public int currentHP;
         private int currentMP;
         private int xCoord;
         private int yCoord;
+
+        public string FindType()
+        {
+            return _type;
+        }
+
+        public int GetMaxHP()
+        {
+            return _maxHP;
+        }
+
+        public int GetCurrentHP()
+        {
+            return currentHP;
+        }
+
+        public int GetMaxMP()
+        {
+            return _maxMP;
+        }
+
+        public int GetCurrentMP()
+        {
+            return currentMP;
+        }
 
         public Hero(string name, string type, int hp, int mp)
         {
@@ -31,10 +59,12 @@ namespace CIS129FinalProject
         {
             if (currentMP >= 3) 
             {
-                Console.WriteLine($"{_type} casts Fireball! 5 damage dealt to enemy");
+                //Console.WriteLine($"{_type} casts Fireball! 5 damage dealt to enemy");
+                //Thread.Sleep(1500);
                 currentMP = currentMP - 3;
                 Console.WriteLine($"{_type}'s MP remaining: {currentMP}/{_maxMP}");
                 Console.WriteLine();
+                
             }
             else
             {
@@ -96,17 +126,95 @@ namespace CIS129FinalProject
                 Console.WriteLine("Not enough MP!");
                 Console.WriteLine();
             }
-        } 
+        }
 
-        
+        public void Set_Wizert_X_Coord(int xCoord)
+        {
+            wizertX_Coord = xCoord;
+        }
+
+        public void Set_Wizert_Y_Coord(int yCoord)
+        {
+            wizertY_Coord = yCoord;
+        }
+
+        public int Get_Wizert_X_Coord()
+        {
+            return wizertX_Coord;
+        }
+
+        public int Get_Wizert_Y_Coord()
+        {
+            return wizertY_Coord;
+        }
+
+
         public void Move(string direction)
         {
+            int x;
+            int y;
+
             if (direction == "s")
             {
+               // y = Set_Wizert_Y_Coord(Get_Wizert_Y_Coord();
+            }
+        }
 
+        public int GetHealth()
+        {
+            return currentHP;
+        }
+
+        public int SetHealth(int setHealth)
+        {
+            return currentHP = setHealth;
+        }
+
+
+
+        //POTION
+        public class Potion
+        {
+            int health;
+            int magic;
+            string potionType;
+
+
+            public Potion(string type)
+            {
+                if (type == "hp")
+                {
+                    health = 10;
+                    potionType = type;
+                }
+                else if (type == "mp")
+                {
+                    magic = 20;
+                    potionType = type;
+                }
+            }
+
+            public string GetPotionType()
+            {
+                return potionType;
+            }
+
+            public void UsePotion()
+            {
+                int HPoverheal;
+                int HPactualAmountHealed;
+                int MPoverheal;
+                int MPactualAmountHealed;
+
+                if (potionType == "hp")
+                {
+                    
+                }
             }
         }
     }
+
+    
 
 
 }

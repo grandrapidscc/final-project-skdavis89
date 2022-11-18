@@ -9,12 +9,13 @@ namespace CIS129FinalProject
     internal class Room
     {
         private bool _hasMonster;
-        private Object _monster;
+        private Monster _monster;
         private string _roomType;
         private bool _wizertOccupied;
         private bool _hasPotion;
         private bool _isWall;
         private bool _isExit;
+        Monster realBadGuy = new Monster(true, "Bad Guy", "Orc", false, "SW");
 
 
         //Wall
@@ -24,7 +25,16 @@ namespace CIS129FinalProject
             _isExit = isExit;
         }
 
-        //No Monster Constructor
+        public Room(bool isWall, bool isExit, string roomType)
+        {
+            _isWall = isWall;
+            _isExit = isExit;
+            _roomType = roomType;
+        }
+
+        //public class Room : Monster (Monster a)
+
+
         public Room(bool hasMonster, string roomType, bool wizertOccupied, 
             bool hasPotion, bool isWall)
         {
@@ -35,16 +45,46 @@ namespace CIS129FinalProject
             _isWall = isWall;
         }
 
-        //Monster Constructor
-        public Room(Object monster, string roomType, bool wizertOccupied,
-            bool hasPotion, bool isWall)
+        public Room(Monster monster, string roomType, bool hasPotion, bool isWall)
         {
             _monster = monster;
             _roomType = roomType;
-            _wizertOccupied = wizertOccupied;
             _hasPotion = hasPotion;
             _isWall = isWall;
         }
 
+        public void SetOccupied(bool isOccupied)
+        {
+            _wizertOccupied = isOccupied;
+        }
+
+        public bool GetOccupied()
+        {
+            return _wizertOccupied;
+        }
+
+        public bool ContainsMonster()
+        {
+            return _hasMonster;
+        }
+
+        //Monster Constructor
+        //public Room MonsterRoom(Monster monster, string roomType, //ref to Monster?
+        //    bool hasPotion, bool isWall)
+        //{
+        //    _monster = monster;
+        //    _roomType = roomType;
+        //    //_wizertOccupied = wizertOccupied;
+        //    _hasPotion = hasPotion;
+        //    _isWall = isWall;
+        //}
+
+
+
+
+        public Monster GetMonster()
+        {
+            return _monster;
+        }
     }
 }
