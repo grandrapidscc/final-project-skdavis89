@@ -83,6 +83,7 @@ Console.WriteLine("You fall into a dungeon");
 Console.WriteLine("Move which direction?");
 //Console.WriteLine(floorPlan.Get_Wizert_X_Coord() + "," + floorPlan.Get_Wizert_Y_Coord());
 Console.WriteLine(floorPlan.GetPlayerPosition());
+Monster dummyMonster = new Monster(true, "dummy", "dummy", false, "nope");
 
 
 
@@ -102,24 +103,27 @@ string direction;
 Hero.Potion potion1 = new Hero.Potion("hp");
 
 Room room = new Room(false, null, "Spawn", true, false, false);
-Room SpawnRoom = new Room(false, null, "Spawn", true, false, false);
-
+//Room SpawnRoom = new Room(false, null, "Spawn", true, false, false);
+//Room SpawnRoom = new Room(playerPos, "Spawn", true);
+//Room SpawnRoom = floorPlan.ReturnSpawnRoom();
+Monster testBanshee = new Monster(true, "testMonster", "Banshee", false, "testRoom");
+Room dummyRoom = new Room(false, testBanshee, "Dummy", true, false, false);
 
 
 Console.WriteLine("start");
-Console.WriteLine(floorPlan.SpawnRoomText());
+//Console.WriteLine(floorPlan.SpawnRoomText());
 Console.WriteLine(floorPlan.GetWizertPosition());
 Console.WriteLine("break");
 Console.WriteLine(floorPlan.GetSpawnRoom());
-floorPlan.PrintMap(testMap);
+//floorPlan.PrintMap(testMap);
 
 while (victory == false)
 {
     direction = Console.ReadLine(); ;
-    floorPlan.Move(direction, testMap, ref victory, ref SpawnRoom); //, ref SpawnRoom);
+    floorPlan.Move(direction, testMap, ref victory, dummyRoom); //, ref SpawnRoom);
     //Console.WriteLine("Move which direction?");
     Console.WriteLine(floorPlan.GetPlayerPosition());
-    floorPlan.PrintMap(testMap);
+    //floorPlan.PrintMap(testMap);
 }
 
 

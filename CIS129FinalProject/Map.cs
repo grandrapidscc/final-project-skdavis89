@@ -14,26 +14,29 @@ namespace CIS129FinalProject
         object playerPos;
         bool winGame;
         bool isWall = false;
+        bool hasMonster = false;
         Hero Wizert = new Hero("Wizert", "Wizert", 100, 200);
         Potion potion1 = new Potion("hp");
-        //Monster goblin1 = new Monster(true, "Blargh", "Goblin", false, "NW");
-        ////Monster goblin = new Monster()
-        //Monster goblin1 = new Monster(true, "Blargh", "Goblin", potion1, "NW");
-        //Monster goblin2 = new Monster(true, "Gobz2", "Goblin", false, "NW");
-        //Monster banshee1 = new Monster(true, "Banz", "Banshee", false, "Hall");
-
-        Room wall = new Room(true, false);
-        Room exit = new Room(false, true);
-        Room goblinRoom = new Room("NW", false, false);
-
-        //Room goblinRoom2 = new Room(banshee1, "Damp", false, false);
 
 
-        //Room blankSpaceBB = new Room(, "scary", false, false, false);
+        Room wall = new Room(true, false, false);
+        Room exit = new Room(false, true, false);
+
+
+
         Room blank = new Room(false, false, "Damp");
+
+        //Monsters
         Monster goblin1;
         Monster goblin2;
         Monster banshee1;
+        Monster orc1;
+        Monster banshee2;
+        Monster orc2;
+
+
+        List<Monster> monsterList = new List<Monster>();
+        
         
 
 
@@ -63,7 +66,7 @@ namespace CIS129FinalProject
         //Room Hall_5_3 = new Room(false, false, "Hall");
 
         //Manually Populate Rooms
-        Room SpawnRoom;
+        internal Room SpawnRoom;
 
         Room Hall_1_3;
         Room Hall_2_3;
@@ -111,7 +114,7 @@ namespace CIS129FinalProject
 
             array[1, 0] = wall;
             array[1, 1] = NW_1_1 = new Room(true, goblin1 = new Monster(true, "Goblin1", "Goblin", false, "NW"), "NW", false, false, false);
-            array[1, 2] = NW_1_2 = new Room(false, null, "NW", false, false, false);
+            array[1, 2] = NW_1_2 = new Room(true, orc2 = new Monster (true, "Orc2", "Orc", false, "NW"), "NW", false, false, false);
             array[1, 3] = Hall_1_3 = new Room(false, null, "Hall", false, false, false);
             array[1, 4] = NE_1_4 = new Room(false, null, "NE", false, false, false);
             array[1, 5] = NE_1_5 = new Room(false, null, "NE", false, false, false);
@@ -129,15 +132,15 @@ namespace CIS129FinalProject
             array[3, 1] = Hall_3_1 = new Room(false, null, "Hall", false, false, false);
             array[3, 2] = Hall_3_2 = new Room(false, null, "Hall", false, false, false);
             array[3, 3] = Hall_3_3_Potion = new Room(false, null, "Hall", false, true, false);
-            array[3, 4] = Hall_3_4 = new Room(false, null, "Hall", false, false, false);
-            array[3, 5] = Hall_3_5 = new Room(false, null, "NW", false, false, false);
+            array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster(true, "Goblin2", "Goblin", false, "Hall"), "Hall", false, false, false);
+            array[3, 5] = Hall_3_5 = new Room(false, null, "Hall", false, false, false);
             array[3, 6] = wall;
 
             array[4, 0] = wall;
             array[4, 1] = SW_4_1 = new Room(false, null, "SW", false, false, false);
             array[4, 2] = SW_4_2 = new Room(false, null, "SW", false, false, false);
             array[4, 3] = Hall_4_3 = new Room(false, null, "Hall", false, false, false);
-            array[4, 4] = SE_4_4 = new Room(false, null, "SE", false, false, false);
+            array[4, 4] = SE_4_4 = new Room(true, orc1 = new Monster(true, "Orc1", "Orc", false, "SE"), "SE", false, false, false);
             array[4, 5] = SE_4_5 = new Room(false, null, "SE", false, false, false);
             array[4, 6] = wall;
 
@@ -145,8 +148,8 @@ namespace CIS129FinalProject
             array[5, 1] = SW_5_1 = new Room(false, null, "SW", false, false, false);
             array[5, 2] = SW_5_2 = new Room(false, null, "SW", false, false, false);
             array[5, 3] = Hall_5_3 = new Room(false, null, "Hall", false, false, false);
-            array[5, 4] = SE_4_4 = new Room(false, null, "SE", false, false, false);
-            array[5, 5] = SE_5_5 = new Room(true, banshee1 = new Monster(true, "Banshee1", "Banshee", false, "NW"), "NW", false, false, false);
+            array[5, 4] = SE_5_4 = new Room(true, banshee2 = new Monster (true, "Banshee2", "Banshee", false, "SE"), "SE", false, false, false);
+            array[5, 5] = SE_5_5 = new Room(true, banshee1 = new Monster(true, "Banshee1", "Banshee", false, "SE"), "SE", false, false, false);
             array[5, 6] = wall;
 
             array[6, 0] = wall;
@@ -187,7 +190,7 @@ namespace CIS129FinalProject
             //array[3, 1] = "space 3.1";
             //array[3, 2] = "space 3.2";
             //array[3, 3] = goblin1 = new Monster(true, "Goblin1", "Goblin", false, "Hall");
-            //array[3, 4] = "goblin 3.4";
+            //array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster (true, "Goblin2", "Goblin", false, "Hall"), "Hall", false, false, false);
             //array[3, 5] = "space 3.5";
             //array[3, 6] = "wall 3.6";
 
@@ -215,20 +218,10 @@ namespace CIS129FinalProject
             //array[6, 5] = "wall 6.5";
             //array[6, 6] = "wall 6.6";
 
+            monsterList.Add(goblin1);
+            monsterList.Add(goblin2);
 
 
-
-            //////Spawn Player Randomly
-            //Random rand = new Random();
-            //int spawn1 = rand.Next(1, 6);
-            //int spawn2 = rand.Next(1, 6);
-
-            //playerPos = array[spawn1, spawn2];
-            //SpawnRoom = new Room(playerPos, "Spawn", true);
-            //array[spawn1, spawn2] = SpawnRoom;
-
-            //wizertX_Coord = spawn1;
-            //wizertY_Coord = spawn2;
 
 
 
@@ -258,62 +251,48 @@ namespace CIS129FinalProject
             array[x, y] = exit;
         }
 
-        //public void SpawnMonsters(object[,] array)
-        //{
-        //    //array[1, 5] = goblin1 = new Monster (true, "Blargh", "Goblin", false, "damp");
-        //    goblin1 = new Monster(true, "Blargh", "Goblin", false, "damp");
+        public void SpawnPlayerRandomly(object[,] array)
+        {
+            ////Spawn Player Randomly
+            Random rand = new Random();
+            int spawn1 = rand.Next(1, 6);
+            int spawn2 = rand.Next(1, 6);
 
-        //    array[5, 1] = banshee1 = new Monster(true, "Banz", "Banshee", false, "arid");
-        //    Hall_1_3 = new Room(goblin1, "Damp", false, false);
-        //}
 
-        //public void SpawnExitRandomly(object[,] array)
-        //{
-        //    Random rand = new Random();
+            playerPos = array[spawn1, spawn2];
 
-        //    int x = rand.Next(0, 7);
-        //    int y = rand.Next(0, 7);
-        //    int z = rand.Next(0, 3);
+            //SpawnRoom = new Room(playerPos, "Spawn", true);
+            SpawnRoom = new Room(true, "Spawn", true, false, false);
+            
+            //TODO
+            //array[spawn1, spawn2] = SpawnRoom;
+            
 
-        //    if (x == 0 || x == 6)
-        //    {
-        //        y = rand.Next(1, 6);
-        //    }
+            wizertX_Coord = spawn1;
+            wizertY_Coord = spawn2;
 
-        //    else if (x != 0 || x != 6)
-        //    {
-        //        if (z == 1)
-        //        {
-        //            y = 0;
-        //        }
-        //        else
-        //        {
-        //            y = 6;
-        //        }
-        //    }
-        //    array[x, y] = exit;
-        //}
+        }
+
+        public Room ReturnSpawnRoom()
+        {
+            return SpawnRoom;
+        }
 
 
 
-        //public void SpawnPlayerRandomly(object[,] array)
-        //{
-        //    Random rand = new Random();
-        //    int spawn1 = rand.Next(1, 6);
-        //    int spawn2 = rand.Next(1, 6);
-
-        //    array[spawn1, spawn2] = Wizert;
-
-        //    wizertX_Coord = spawn1;
-        //    wizertY_Coord = spawn2;
-        //}
+           
 
 
 
-        public int PlayerX_Coord()
+
+
+
+            public int PlayerX_Coord()
         {
             return wizertX_Coord;
         }
+
+
 
         public int PlayerY_Coord()
         {
@@ -351,10 +330,7 @@ namespace CIS129FinalProject
             return new int[2] { wizertX_Coord, wizertY_Coord }; 
         }
 
-        //public object SetPlayerPosition(int xCoord, int yCoord)
-        //{
-        //    return playerPos[xCoord, yCoord];
-        //}
+
 
         public void SetPlayerPos(int x, int y)
         {
@@ -373,9 +349,10 @@ namespace CIS129FinalProject
             int line = 0;
             foreach (var item in map)
             {
-                //Console.Write(item.Equals(SpawnRoom);
-                Console.Write(item.Equals(SpawnRoom.GetOccupied()));
-                //Console.Write(item + " ");
+                //Console.Write(item.Equals(SpawnRoom));
+                
+                //Console.Write(item.Equals(SpawnRoom.GetOccupied()) + " ");
+                Console.Write(item + " ");
                 iterator++;
                 if (iterator == 7)
                 {
@@ -386,16 +363,35 @@ namespace CIS129FinalProject
             }
         }
 
-        public void Move(string direction, object[,] array, ref bool victory, ref Room room)// ref Room SpawnRoom)
+        public void Move(string direction, object[,] array, ref bool victory, Room? room)//, ref Room room)// ref Room SpawnRoom)
         {
             //victory = victory;
+
+
+            //object nextArray;
+            //object currentArray;
+
             object nextArray;
+            object currentArray;
+            Monster monsterToFight;
+            Room roomNextArray;
+
+            //room = SpawnRoom;
+            //if (monsterList.Contains(monster))
+            //{
+
+            //}
+
+            
+
+
             //object coordJustCameFrom = array[wizertX_Coord, wizertY_Coord];
             //string roomType = monster.GetMonsterRoom();
             //Monster enemy = monster.GetMonsterType();
             //Object replacement;
             //var originalRoom = spawnRoom;
             Room tempRoom;
+            //Monster monsterToFight = monster;
 
             if (victory == false)
             {
@@ -405,6 +401,7 @@ namespace CIS129FinalProject
 
                 {
                     nextArray = array[wizertX_Coord + 1, wizertY_Coord];
+                    currentArray = array[wizertX_Coord, wizertY_Coord];
 
 
                     if (nextArray.Equals(wall))
@@ -433,48 +430,61 @@ namespace CIS129FinalProject
                     //Move Player
                     else if (!(nextArray.Equals(wall))) 
                     {
-                        //array[wizertX_Coord, wizertY_Coord] = originalRoom;
-                        //room.SetOccupied(false);
+                        
                         wizertX_Coord++;
                         playerPos = array[wizertX_Coord, wizertY_Coord];
+                        room = (Room?)array[wizertX_Coord, wizertY_Coord];
+
+                        if (room.GetRoomType() == "NE")
+                        {
+                            Console.WriteLine(room.PrintNERoom());
+                        }
+                        else if (room.GetRoomType() == "SE")
+                        {
+                            Console.WriteLine(room.PrintSERoom());
+                        }
+                        else if (room.GetRoomType() == "SW")
+                        {
+                            Console.WriteLine(room.PrintSWRoom());
+                        }
+                        else if (room.GetRoomType() == "NW")
+                        {
+                            Console.WriteLine(room.PrintNWRoom());
+                        }
+                        else if (room.GetRoomType() == "Hall")
+                        {
+                            Console.WriteLine(room.PrintHallRoom());
+                        }
+                        else if (room.GetRoomType() == "Spawn")
+                        {
+                            Console.WriteLine(room.PrintSpawnRoom());
+                        }
+
+
+
                         
-                        
-                        //array[wizertX_Coord, wizertY_Coord] = playerPos; //was = Wizert
-                        //array[wizertX_Coord, wizertY_Coord] = SpawnRoom.SetOccupied
-                        //array[wizertX_Coord--, wizertY_Coord] = originalRoom;
 
                     }
 
-                    //else if (!(nextArray.Equals(wall)))
-                    //{
-                    //    //array[wizertX_Coord, wizertY_Coord] = nw1;
-                    //    array[wizertX_Coord, wizertY_Coord] = spawnRoom;
-                    //    wizertY_Coord++;
-                    //    array[wizertX_Coord, wizertY_Coord] = Wizert;
-                    //}
+                   
 
-                    //if (nextArray.Equals(goblin1))
-                    //{
-                    //    Battle.BeginBattle(Wizert, goblin1);
-                    //}
-
-                    if (nextArray.Equals(room.ContainsMonster()))
+                    if (room.ContainsMonster() == true)
                     {
-                        Battle.BeginBattle(Wizert, room.GetMonster());
+                        monsterToFight = room.GetMonster();
+                        if (monsterToFight.GetHealth() > 0)
+                        {
+                            Battle.BeginBattle(Wizert, monsterToFight);
+                        }
+                        if (monsterToFight.GetHealth() <= 0)
+                        {
+                            Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                        }  
                     }
 
+                }
 
-                    //else if (!(nextArray.Equals(blankSpaceBB)))
-                    //{
-                    //    wizertX_Coord++;
-                    //    blankSpaceBB.SetOccupied(true);
 
-                    //}
-
-                    //if (blankSpaceBB.GetOccupied() == true)
-                    //{
-                    //    blankSpaceBB.Get
-                    //}
+                   
 
                 }
 
@@ -506,22 +516,52 @@ namespace CIS129FinalProject
                     //Move player
                     else if (!(nextArray.Equals(wall)))
                     {
-                        //array[wizertX_Coord, wizertY_Coord] = nw1;
-                        //array[wizertX_Coord, wizertY_Coord] = spawnRoom;
+                        
                         wizertY_Coord++;
                         playerPos = array[wizertX_Coord, wizertY_Coord];
-                        //array[wizertX_Coord, wizertY_Coord] = playerPos;
-                    }
+                    
+                        room = (Room?)array[wizertX_Coord, wizertY_Coord];
 
-                    //if (nextArray.Equals(goblin1))
-                    //{
-                    //    Battle.BeginBattle(Wizert, goblin1);
-                    //}
-                    if (nextArray.Equals(room.ContainsMonster()))
+                    if (room.GetRoomType() == "NE")
                     {
-                        Battle.BeginBattle(Wizert, room.GetMonster());
+                        Console.WriteLine(room.PrintNERoom());
+                    }
+                    else if (room.GetRoomType() == "SE")
+                    {
+                        Console.WriteLine(room.PrintSERoom());
+                    }
+                    else if (room.GetRoomType() == "SW")
+                    {
+                        Console.WriteLine(room.PrintSWRoom());
+                    }
+                    else if (room.GetRoomType() == "NW")
+                    {
+                        Console.WriteLine(room.PrintNWRoom());
+                    }
+                    else if (room.GetRoomType() == "Hall")
+                    {
+                        Console.WriteLine(room.PrintHallRoom());
+                    }
+                    else if (room.GetRoomType() == "Spawn")
+                    {
+                        Console.WriteLine(room.PrintSpawnRoom());
                     }
                 }
+
+              
+                if (room.ContainsMonster() == true)
+                {
+                    monsterToFight = room.GetMonster();
+                    if (monsterToFight.GetHealth() > 0)
+                    {
+                        Battle.BeginBattle(Wizert, monsterToFight);
+                    }
+                    if (monsterToFight.GetHealth() <= 0)
+                    {
+                        Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                    }
+                }
+            }
 
                 if (direction == "a")
                 {
@@ -551,23 +591,53 @@ namespace CIS129FinalProject
                     //Move player
                     else if (!(nextArray.Equals(wall)))
                     {
-                        //array[wizertX_Coord, wizertY_Coord] = nw1;
-                        //array[wizertX_Coord, wizertY_Coord] = spawnRoom;
+                        
                         wizertY_Coord--;
                         playerPos = array[wizertX_Coord, wizertY_Coord];
-                        //array[wizertX_Coord, wizertY_Coord] = playerPos;
-                    }
+                    
+                    room = (Room?)array[wizertX_Coord, wizertY_Coord];
 
-                    //if (nextArray.Equals(goblin1))
-                    //{
-                    //    Battle.BeginBattle(Wizert, goblin1);
-                    //}
-                    if (nextArray.Equals(room.ContainsMonster()))
+                    if (room.GetRoomType() == "NE")
                     {
-                        Battle.BeginBattle(Wizert, room.GetMonster());
+                        Console.WriteLine(room.PrintNERoom());
                     }
-
+                    else if (room.GetRoomType() == "SE")
+                    {
+                        Console.WriteLine(room.PrintSERoom());
+                    }
+                    else if (room.GetRoomType() == "SW")
+                    {
+                        Console.WriteLine(room.PrintSWRoom());
+                    }
+                    else if (room.GetRoomType() == "NW")
+                    {
+                        Console.WriteLine(room.PrintNWRoom());
+                    }
+                    else if (room.GetRoomType() == "Hall")
+                    {
+                        Console.WriteLine(room.PrintHallRoom());
+                    }
+                    else if (room.GetRoomType() == "Spawn")
+                    {
+                        Console.WriteLine(room.PrintSpawnRoom());
+                    }
                 }
+
+                
+                if (room.ContainsMonster() == true)
+                {
+                    monsterToFight = room.GetMonster();
+                    if (monsterToFight.GetHealth() > 0)
+                    {
+                        Battle.BeginBattle(Wizert, monsterToFight);
+                    }
+                    if (monsterToFight.GetHealth() <= 0)
+                    {
+                        Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                    }
+                }
+
+            }
 
                 if (direction == "w")
                 {
@@ -600,68 +670,66 @@ namespace CIS129FinalProject
                     //Move player
                     else if (!(nextArray.Equals(wall)))
                     {
-                        //array[wizertX_Coord, wizertY_Coord] = nw1;
-                        //array[wizertX_Coord, wizertY_Coord] = spawnRoom;
+                        
                         wizertX_Coord--;
                         playerPos = array[wizertX_Coord, wizertY_Coord];
-                        //array[wizertX_Coord, wizertY_Coord] = playerPos;
-                    }
+                  
+                    room = (Room?)array[wizertX_Coord, wizertY_Coord];
 
-                    //if (nextArray.Equals(goblin1))
-                    //{
-                    //    Battle.BeginBattle(Wizert, goblin1);
-                    //}
-                    if (nextArray.Equals(room.ContainsMonster()))
+                    if (room.GetRoomType() == "NE")
                     {
-                        Battle.BeginBattle(Wizert, room.GetMonster());
+                        Console.WriteLine(room.PrintNERoom());
+                    }
+                    else if (room.GetRoomType() == "SE")
+                    {
+                        Console.WriteLine(room.PrintSERoom());
+                    }
+                    else if (room.GetRoomType() == "SW")
+                    {
+                        Console.WriteLine(room.PrintSWRoom());
+                    }
+                    else if (room.GetRoomType() == "NW")
+                    {
+                        Console.WriteLine(room.PrintNWRoom());
+                    }
+                    else if (room.GetRoomType() == "Hall")
+                    {
+                        Console.WriteLine(room.PrintHallRoom());
+                    }
+                    else if (room.GetRoomType() == "Spawn")
+                    {
+                        Console.WriteLine(room.PrintSpawnRoom());
+                    }
+                }
+
+     
+                if (room.ContainsMonster() == true)
+                {
+                    monsterToFight = room.GetMonster();
+                    if (monsterToFight.GetHealth() > 0)
+                    {
+                        Battle.BeginBattle(Wizert, monsterToFight);
+                    }
+                    if (monsterToFight.GetHealth() <= 0)
+                    {
+                        Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
                     }
                 }
             }
-            //if (victory == true)
-            //{
-            //    //Victory();
-            //    Console.WriteLine("Play Again? y/n");
-            //    string prompt = Console.ReadLine();
-            //    if (prompt == "y")
-            //    {
-                   
-            //    }
-            //}
+            }
+
+
 
 
 
         }
-        public string SpawnRoomText()
-        {
-            return "Light from above shines through the hole you fell through, illuminating the damp wretched ground";
-        }
 
-        public void SpawnPlayerRandomly(object[,] array)
-        {
-            ////Spawn Player Randomly
-            Random rand = new Random();
-            int spawn1 = rand.Next(1, 6);
-            int spawn2 = rand.Next(1, 6);
 
-            //array[spawn1, spawn2] = playerPos;
-            playerPos = array[spawn1, spawn2];
-            //array[spawn1, spawn2] = SpawnRoom;
-            SpawnRoom = new Room(playerPos, "Spawn", true);
-            array[spawn1, spawn2] = "Spawn Room";//SpawnRoom;
-            //SpawnRoom = array[spawn1, spawn2];
-            //array[spawn1, spawn2] = playerPos;
-            // playerPos = array[spawn1, spawn2];
 
-            wizertX_Coord = spawn1;
-            wizertY_Coord = spawn2;
-            //playerPos = (object[,])playerPos[wizertX_Coord, wizertY_Coord];
-            // array[spawn1, spawn2] = playerPos;
-            //playerPos = array[wizertX_Coord, wizertY_Coord];
-        }
     }
 
 
 
 
-}
+
 

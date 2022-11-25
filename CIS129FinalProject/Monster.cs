@@ -20,6 +20,7 @@ namespace CIS129FinalProject
         private int monsterAttackPower;
         private bool _isMonster;
         private Potion potion;
+        Monster monster;
 
 
 
@@ -91,9 +92,9 @@ namespace CIS129FinalProject
             return _isMonster = isMonster_T_or_F;
         }
 
-        public Type GetMonster(Type type)
+        public Monster GetMonster()
         {
-            return type;
+            return monster;
         }
 
         //public int GetHealth

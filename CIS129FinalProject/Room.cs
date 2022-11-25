@@ -19,12 +19,14 @@ namespace CIS129FinalProject
         //Monster realBadGuy = new Monster(true, "Bad Guy", "Orc", false, "SW");
         //Monster banshee1 = new Monster(true, "Banz", "Banshee", false, "Hall");
         //Room room1 = new Room(false, false);
+        Room tempRoom;
 
         //Wall
-        public Room(bool isWall, bool isExit)
+        public Room(bool isWall, bool isExit, bool containsMonster)
         {
             _isWall = isWall;
             _isExit = isExit;
+            _hasMonster = containsMonster;
         }
 
         public Room(bool isWall, bool isExit, string roomType)
@@ -92,9 +94,26 @@ namespace CIS129FinalProject
         //    return enemy;
         //}
 
+        public Room GetRoom(object roomLocation)
+        {
+            return tempRoom;
+        }
+
+        public void SetRoom(object room)
+        {
+            room = room;
+        }
+
+
+
         public bool GetOccupied()
         {
             return _wizertOccupied;
+        }
+
+        public string GetRoomType ()
+        {
+            return _roomType;
         }
 
         public bool ContainsMonster()
@@ -105,6 +124,36 @@ namespace CIS129FinalProject
         public string SpawnRoom()
         {
             return "Light from above shines through the hole you fell through, illuminating the damp wretched ground";
+        }
+
+        public string PrintSpawnRoom()
+        {
+            return "Light from above shines through the hole you fell through, illuminating the damp wretched ground";
+        }
+
+        public string PrintNWRoom()
+        {
+            return "NW Room";
+        }
+
+        public string PrintNERoom()
+        {
+            return "NE Room";
+        }
+
+        public string PrintSWRoom()
+        {
+            return "SW Room";
+        }
+
+        public string PrintSERoom()
+        {
+            return "SE Room";
+        }
+
+        public string PrintHallRoom()
+        {
+            return "Hall";
         }
 
         //Monster Constructor
@@ -120,10 +169,14 @@ namespace CIS129FinalProject
 
 
 
-
+        //public Monster SetMonster(Room room)
+        //{
+        //    _monster = room.;
+        //}
         public Monster GetMonster()
         {
             return _monster;
+
         }
     }
 }
