@@ -16,17 +16,18 @@ namespace CIS129FinalProject
         private bool _isWall;
         private bool _isExit;
         private object _location;
+        private string _potionType;
         //Monster realBadGuy = new Monster(true, "Bad Guy", "Orc", false, "SW");
         //Monster banshee1 = new Monster(true, "Banz", "Banshee", false, "Hall");
         //Room room1 = new Room(false, false);
         Room tempRoom;
 
         //Wall
-        public Room(bool isWall, bool isExit, bool containsMonster)
+        public Room(bool isWall, bool isExit)//, bool containsMonster)
         {
             _isWall = isWall;
             _isExit = isExit;
-            _hasMonster = containsMonster;
+            //_hasMonster = containsMonster;
         }
 
         public Room(bool isWall, bool isExit, string roomType)
@@ -49,13 +50,14 @@ namespace CIS129FinalProject
             _isWall = isWall;
         }
 
-        public Room(bool hasMonster, Monster? monster, string roomType, bool wizertOccupied,
+        public Room(bool hasMonster, Monster? monster, string roomType, string? potionType,
              bool hasPotion, bool isWall)
         {
             _hasMonster = hasMonster;
             _monster = monster;
             _roomType = roomType;
-            _wizertOccupied = wizertOccupied;
+            _potionType = potionType;
+            //_wizertOccupied = wizertOccupied;
             _hasPotion = hasPotion;
             _isWall = isWall;
         }
@@ -104,6 +106,25 @@ namespace CIS129FinalProject
             room = room;
         }
 
+        public bool GetPotion()
+        {
+            return _hasPotion;
+        }
+
+        public bool SetPotion(bool setPotion)
+        {
+            return _hasPotion = setPotion;
+        }
+
+        public string GetPotionType()
+        {
+            return _potionType;
+        }
+
+        public string SetPotionType(string potionType)
+        {
+            return _potionType = potionType;
+        }
 
 
         public bool GetOccupied()
@@ -121,6 +142,54 @@ namespace CIS129FinalProject
             return _hasMonster;
         }
 
+        public bool SetRoomContainsMonster(bool isMonster)
+        {
+            return isMonster;
+        }
+
+        public void UsePotion(string aPotionType, Hero wizert)
+        {
+            string potionType;
+            int missingHealth = wizert.GetMaxHP() - wizert.GetCurrentHP();
+            int missingMana = wizert.GetMaxMP() - wizert.GetCurrentMP();
+            if (aPotionType == "hp")
+            {
+                if (missingHealth >= 10)
+                {
+                    Console.WriteLine("Wizert finds health potion! 10 health restored!");
+                    wizert.SetHealth(wizert.GetCurrentHP() + 10);
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+                else
+                {
+                    Console.WriteLine("Wizert finds health potion! The effects are diminished...");
+                    wizert.SetHealth(wizert.GetMaxHP());
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+                
+            }
+            if (aPotionType == "mp")
+
+                if (missingMana >= 20)
+                {
+                    Console.WriteLine("Wizert finds magic potion! 20 mana restored!");
+                    wizert.SetHealth(wizert.GetCurrentMP() + 20);
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+                else
+                {
+                    Console.WriteLine("Wizert finds mana potion! The effects are diminished...");
+                    wizert.SetMP(wizert.GetMaxMP());
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+
+
+        }
+
         public string SpawnRoom()
         {
             return "Light from above shines through the hole you fell through, illuminating the damp wretched ground";
@@ -133,27 +202,27 @@ namespace CIS129FinalProject
 
         public string PrintNWRoom()
         {
-            return "NW Room";
+            return "It sounds as if you are walking through water, but the substance feels much thicker...";
         }
 
         public string PrintNERoom()
         {
-            return "NE Room";
+            return "The air smells fetid and the soft dirt below your feet feels like a freshly dug grave.";
         }
 
         public string PrintSWRoom()
         {
-            return "SW Room";
+            return "The room is so silent that you can hear your own breathing...at least you hope it is your own.";
         }
 
         public string PrintSERoom()
         {
-            return "SE Room";
+            return "A screeching sound is apparent, but you can not tell if it is near or echoing from a far away location";
         }
 
         public string PrintHallRoom()
         {
-            return "Hall";
+            return "You feel ornate marble flooring under your feet, covered in a thick layer of dust, blood, and fur.";
         }
 
         //Monster Constructor

@@ -65,10 +65,10 @@ object[,] testMap = new object[7, 7];
 
 Map floorPlan = new Map();
 bool victory = false;
+bool defeat = false;
 
 
-floorPlan.PopulateMap(testMap);
-floorPlan.SpawnPlayerRandomly(testMap);
+
 //floorPlan.SpawnMonsters(testMap);
 
 //test room
@@ -77,12 +77,20 @@ MonsterRoom monsterRoom = new MonsterRoom();
 //Room room = new Room()
 Monster goblin2 = new Monster(true, "Gobz2", "Goblin", false, "NW");
 
+//working
+//floorPlan.PopulateMap(testMap);
+//floorPlan.SpawnPlayerRandomly(testMap);
+//Console.WriteLine("Light from above shines through the hole you fell through, illuminating the damp wretched ground");
+//Console.WriteLine("Move which direction?");
+//Console.WriteLine("w to move north, s to move south, a to move west, d to move east");
 
 
-Console.WriteLine("You fall into a dungeon");
-Console.WriteLine("Move which direction?");
-//Console.WriteLine(floorPlan.Get_Wizert_X_Coord() + "," + floorPlan.Get_Wizert_Y_Coord());
+
+
 Console.WriteLine(floorPlan.GetPlayerPosition());
+
+
+
 Monster dummyMonster = new Monster(true, "dummy", "dummy", false, "nope");
 
 
@@ -99,31 +107,67 @@ Monster dummyMonster = new Monster(true, "dummy", "dummy", false, "nope");
 //} while (victory == false);
 
 string direction;
+bool playAgain = true;
+string repeat;
 
-Hero.Potion potion1 = new Hero.Potion("hp");
 
-Room room = new Room(false, null, "Spawn", true, false, false);
+
+Room room = new Room(false, null, "Spawn", null, false, false);
 //Room SpawnRoom = new Room(false, null, "Spawn", true, false, false);
 //Room SpawnRoom = new Room(playerPos, "Spawn", true);
 //Room SpawnRoom = floorPlan.ReturnSpawnRoom();
 Monster testBanshee = new Monster(true, "testMonster", "Banshee", false, "testRoom");
-Room dummyRoom = new Room(false, testBanshee, "Dummy", true, false, false);
+Room dummyRoom = new Room(false, testBanshee, "Dummy", null, false, false);
+Hero potion1 = new Hero(true, "hp");
+//potion1.UsePotion();
 
 
-Console.WriteLine("start");
+//Console.WriteLine("start");
 //Console.WriteLine(floorPlan.SpawnRoomText());
-Console.WriteLine(floorPlan.GetWizertPosition());
-Console.WriteLine("break");
-Console.WriteLine(floorPlan.GetSpawnRoom());
+//Console.WriteLine(floorPlan.GetWizertPosition());
+//Console.WriteLine("break");
+//Console.WriteLine(floorPlan.GetSpawnRoom());
 //floorPlan.PrintMap(testMap);
 
-while (victory == false)
+while (playAgain == true)
 {
-    direction = Console.ReadLine(); ;
-    floorPlan.Move(direction, testMap, ref victory, dummyRoom); //, ref SpawnRoom);
-    //Console.WriteLine("Move which direction?");
-    Console.WriteLine(floorPlan.GetPlayerPosition());
-    //floorPlan.PrintMap(testMap);
+    floorPlan.PopulateMap(testMap);
+    floorPlan.SpawnPlayerRandomly(testMap);
+    Console.WriteLine("Light from above shines through the hole you fell through, illuminating the damp wretched ground");
+    Console.WriteLine();
+    Console.WriteLine("Move which direction? Input selection and press Enter");
+    Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+
+
+    while (victory == false && defeat == false)
+    {
+        direction = Console.ReadLine().ToLower();
+        floorPlan.Move(direction, testMap, ref victory, ref defeat, dummyRoom); //, ref SpawnRoom);
+                                                                    //Console.WriteLine("Move which direction?");
+        Console.WriteLine(floorPlan.GetPlayerPosition());
+        //floorPlan.PrintMap(testMap);
+        //potion1.UsePotion();
+    }
+
+    Console.WriteLine("Play again? y/n");
+    repeat = Console.ReadLine();
+    if (repeat == "n")
+    {
+        playAgain = false;
+    }
+    else if  (repeat == "y")
+    {
+        playAgain = true;
+        victory = false;
+        defeat = false;
+        
+    }
+    else
+    {
+        Console.WriteLine($"{repeat} is not a valid option.");
+        Console.WriteLine("Play again? y/n");
+        repeat = Console.ReadLine();
+    }
 }
 
 

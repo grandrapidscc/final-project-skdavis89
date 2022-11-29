@@ -16,11 +16,12 @@ namespace CIS129FinalProject
         bool isWall = false;
         bool hasMonster = false;
         Hero Wizert = new Hero("Wizert", "Wizert", 100, 200);
-        Potion potion1 = new Potion("hp");
+        //Potion potion1 = new Potion("hp");
 
+        //testing deleting contains monster from wall and exit object
+        Room wall = new Room(true, false);
 
-        Room wall = new Room(true, false, false);
-        Room exit = new Room(false, true, false);
+        Room exit = new Room(false, true);//, false);
 
 
 
@@ -29,6 +30,7 @@ namespace CIS129FinalProject
         //Monsters
         Monster goblin1;
         Monster goblin2;
+        Monster goblin3;
         Monster banshee1;
         Monster orc1;
         Monster banshee2;
@@ -113,43 +115,43 @@ namespace CIS129FinalProject
             array[0, 6] = wall;
 
             array[1, 0] = wall;
-            array[1, 1] = NW_1_1 = new Room(true, goblin1 = new Monster(true, "Goblin1", "Goblin", false, "NW"), "NW", false, false, false);
-            array[1, 2] = NW_1_2 = new Room(true, orc2 = new Monster (true, "Orc2", "Orc", false, "NW"), "NW", false, false, false);
-            array[1, 3] = Hall_1_3 = new Room(false, null, "Hall", false, false, false);
-            array[1, 4] = NE_1_4 = new Room(false, null, "NE", false, false, false);
-            array[1, 5] = NE_1_5 = new Room(false, null, "NE", false, false, false);
+            array[1, 1] = NW_1_1 = new Room(true, goblin1 = new Monster(true, "Goblin1", "Goblin", false, null), "NW", null, false, false);
+            array[1, 2] = NW_1_2 = new Room(true, orc2 = new Monster (true, "Orc2", "Orc", false, null), "NW", null, false, false);
+            array[1, 3] = Hall_1_3 = new Room(false, null, "Hall", null, false, false);
+            array[1, 4] = NE_1_4 = new Room(false, null, "NE", null, false, false);
+            array[1, 5] = NE_1_5 = new Room(false, null, "NE", null, false, false);
             array[1, 6] = wall;
 
             array[2, 0] = wall;
-            array[2, 1] = NW_2_1 = new Room(false, null, "NW", false, false, false);
-            array[2, 2] = NW_2_2 = new Room(false, null, "NW", false, false, false);
-            array[2, 3] = Hall_2_3 = new Room(false, null, "Hall", false, false, false);
-            array[2, 4] = NE_2_4 = new Room(false, null, "NE", false, false, false);
-            array[2, 5] = NE_2_5 = new Room(false, null, "NE", false, false, false);
+            array[2, 1] = NW_2_1 = new Room(false, null, "NW", null, false, false);
+            array[2, 2] = NW_2_2 = new Room(false, null, "NW", null, false, false);
+            array[2, 3] = Hall_2_3 = new Room(false, null, "Hall", null, false, false);
+            array[2, 4] = NE_2_4 = new Room(false, null, "NE", null, false, false);
+            array[2, 5] = NE_2_5 = new Room(false, null, "NE", null, false, false);
             array[2, 6] = wall;
 
             array[3, 0] = wall;
-            array[3, 1] = Hall_3_1 = new Room(false, null, "Hall", false, false, false);
-            array[3, 2] = Hall_3_2 = new Room(false, null, "Hall", false, false, false);
-            array[3, 3] = Hall_3_3_Potion = new Room(false, null, "Hall", false, true, false);
-            array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster(true, "Goblin2", "Goblin", false, "Hall"), "Hall", false, false, false);
-            array[3, 5] = Hall_3_5 = new Room(false, null, "Hall", false, false, false);
+            array[3, 1] = Hall_3_1 = new Room(false, null, "Hall", null, false, false);
+            array[3, 2] = Hall_3_2 = new Room(false, null, "Hall", "mp", true, false);
+            array[3, 3] = Hall_3_3_Potion = new Room(false, null, "Hall", "hp", true, false);
+            array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster(true, "Goblin2", "Goblin", false, null), "Hall", null, false, false);
+            array[3, 5] = Hall_3_5 = new Room(false, null, "Hall", null, false, false);
             array[3, 6] = wall;
 
             array[4, 0] = wall;
-            array[4, 1] = SW_4_1 = new Room(false, null, "SW", false, false, false);
-            array[4, 2] = SW_4_2 = new Room(false, null, "SW", false, false, false);
-            array[4, 3] = Hall_4_3 = new Room(false, null, "Hall", false, false, false);
-            array[4, 4] = SE_4_4 = new Room(true, orc1 = new Monster(true, "Orc1", "Orc", false, "SE"), "SE", false, false, false);
-            array[4, 5] = SE_4_5 = new Room(false, null, "SE", false, false, false);
+            array[4, 1] = SW_4_1 = new Room(false, null, "SW", null, false, false);
+            array[4, 2] = SW_4_2 = new Room(true, banshee2 = new Monster (true, "Banshee2", "Banshee", false, null), "SW", null, false, false);
+            array[4, 3] = Hall_4_3 = new Room(false, null, "Hall", null, false, false);
+            array[4, 4] = SE_4_4 = new Room(true, orc1 = new Monster(true, "Orc1", "Orc", false, null), "SE", null, false, false);
+            array[4, 5] = SE_4_5 = new Room(false, null, "SE", null, false, false);
             array[4, 6] = wall;
 
             array[5, 0] = wall;
-            array[5, 1] = SW_5_1 = new Room(false, null, "SW", false, false, false);
-            array[5, 2] = SW_5_2 = new Room(false, null, "SW", false, false, false);
-            array[5, 3] = Hall_5_3 = new Room(false, null, "Hall", false, false, false);
-            array[5, 4] = SE_5_4 = new Room(true, banshee2 = new Monster (true, "Banshee2", "Banshee", false, "SE"), "SE", false, false, false);
-            array[5, 5] = SE_5_5 = new Room(true, banshee1 = new Monster(true, "Banshee1", "Banshee", false, "SE"), "SE", false, false, false);
+            array[5, 1] = SW_5_1 = new Room(false, null, "SW", null, false, false);
+            array[5, 2] = SW_5_2 = new Room(false, null, "SW", null, false, false);
+            array[5, 3] = Hall_5_3 = new Room(false, null, "Hall", null, false, false);
+            array[5, 4] = SE_5_4 = new Room(true, goblin3 = new Monster (true, "Goblin3", "Goblin", true, "mp"), "SE", null, false, false);
+            array[5, 5] = SE_5_5 = new Room(true, banshee1 = new Monster(true, "Banshee1", "Banshee", true, "hp"), "SE", null, false, false);
             array[5, 6] = wall;
 
             array[6, 0] = wall;
@@ -363,7 +365,7 @@ namespace CIS129FinalProject
             }
         }
 
-        public void Move(string direction, object[,] array, ref bool victory, Room? room)//, ref Room room)// ref Room SpawnRoom)
+        public void Move(string direction, object[,] array, ref bool victory, ref bool defeat, Room? room)//, ref Room room)// ref Room SpawnRoom)
         {
             //victory = victory;
 
@@ -374,6 +376,7 @@ namespace CIS129FinalProject
             object nextArray;
             object currentArray;
             Monster monsterToFight;
+            Monster deadMonster;
             Room roomNextArray;
 
             //room = SpawnRoom;
@@ -393,13 +396,16 @@ namespace CIS129FinalProject
             Room tempRoom;
             //Monster monsterToFight = monster;
 
-            if (victory == false)
+            if (victory == false || defeat == false)
             {
 
                 //Move South
+
+
                 if (direction == "s")
 
                 {
+                    Console.Clear();
                     nextArray = array[wizertX_Coord + 1, wizertY_Coord];
                     currentArray = array[wizertX_Coord, wizertY_Coord];
 
@@ -407,10 +413,14 @@ namespace CIS129FinalProject
                     if (nextArray.Equals(wall))
                     {
                         //isWall = true;
-                        Console.WriteLine("You have ran into a wall");
-                        array[wizertX_Coord - 1, wizertY_Coord] = playerPos; // was = Wizert
+                        Console.WriteLine("You run into a wall. Despair and hopelessness sets in, but you push on.");
+                        Console.WriteLine();
+                        Console.WriteLine("Move which direction? Input selection and press Enter");
+                        Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                        Console.WriteLine();
+                        //array[wizertX_Coord - 1, wizertY_Coord] = playerPos; // was = Wizert
                         //currentArray = Wizert;
-                        
+
 
                     }
 
@@ -420,10 +430,16 @@ namespace CIS129FinalProject
                         string prompt = Console.ReadLine();
                         if (prompt == "y")
                         {
+                            Console.WriteLine("Escape to daylight!");
                             victory = true;
+                            Wizert.SetMP(200);
+                            Wizert.SetHP(100);
 
                         }
-
+                        else if (prompt == "n")
+                        {
+                            Console.WriteLine("The Wizert turns his back on the daylight and returns to the dungeon. A grim reminder that most who turn their back on the light never again find it...");
+                        }
 
                     }
 
@@ -455,14 +471,22 @@ namespace CIS129FinalProject
                         {
                             Console.WriteLine(room.PrintHallRoom());
                         }
-                        else if (room.GetRoomType() == "Spawn")
+
+                        Console.WriteLine();
+
+                        if (room.GetPotion() == true)
                         {
-                            Console.WriteLine(room.PrintSpawnRoom());
+                            room.UsePotion(room.GetPotionType(), Wizert);
+                            room.SetPotion(false);
+                            Console.WriteLine();
                         }
 
+                        Console.WriteLine("Move which direction? Input selection and press Enter");
+                        Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                        Console.WriteLine();
 
 
-                        
+
 
                     }
 
@@ -471,13 +495,27 @@ namespace CIS129FinalProject
                     if (room.ContainsMonster() == true)
                     {
                         monsterToFight = room.GetMonster();
+                        deadMonster = room.GetMonster();
+
                         if (monsterToFight.GetHealth() > 0)
                         {
                             Battle.BeginBattle(Wizert, monsterToFight);
+                            if (Wizert.GetHealth() <= 0)
+                            {
+                                defeat = true;
+                            }
                         }
                         if (monsterToFight.GetHealth() <= 0)
                         {
-                            Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                            //room.SetRoomContainsMonster(false);
+                            Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
+                            Console.WriteLine();
+                            if (monsterToFight.GetHasItem() == true)
+                            {
+                                Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)} drops a potion!");
+                                monsterToFight.UsePotion(monsterToFight.GetItemType(), Wizert);
+                                monsterToFight.SetHasItem(false);
+                            }
                         }  
                     }
 
@@ -490,28 +528,39 @@ namespace CIS129FinalProject
 
                 if (direction == "d")
                 {
-                    nextArray = array[wizertX_Coord, wizertY_Coord + 1];
+                Console.Clear();
+                nextArray = array[wizertX_Coord, wizertY_Coord + 1];
 
 
                     if (nextArray.Equals(wall))
                     {
                         //isWall = true;
-                        Console.WriteLine("You have ran into a wall");
-                        array[wizertX_Coord, wizertY_Coord - 1] = playerPos;
+                        Console.WriteLine("Your hands press up against a wall and feel the cracked bricks.");
+                        Console.WriteLine();
+                        Console.WriteLine("Move which direction? Input selection and press Enter");
+                        Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                        Console.WriteLine();
+                    //array[wizertX_Coord, wizertY_Coord - 1] = playerPos;
 
-                    }
+                }
 
                     if (nextArray.Equals(exit))
                     {
                         Console.WriteLine("You find the exit! Escape? Y/N");
                         string prompt = Console.ReadLine();
-                        if (prompt == "y")
-                        {
-                            victory = true;
+                    if (prompt == "y")
+                    {
+                        Console.WriteLine("Escape to daylight!");
+                        victory = true;
+                        Wizert.SetMP(200);
+                        Wizert.SetHP(100);
 
-
-                        }
                     }
+                    else if (prompt == "n")
+                    {
+                        Console.WriteLine("The Wizert turns his back on the daylight and returns to the dungeon. A grim reminder that most who turn their back on the light never again find it...");
+                    }
+                }
 
                     //Move player
                     else if (!(nextArray.Equals(wall)))
@@ -542,51 +591,81 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine(room.PrintHallRoom());
                     }
-                    else if (room.GetRoomType() == "Spawn")
+
+                    Console.WriteLine();
+
+                    if (room.GetPotion() == true)
                     {
-                        Console.WriteLine(room.PrintSpawnRoom());
+                        room.UsePotion(room.GetPotionType(), Wizert);
+                        room.SetPotion(false);
+                        Console.WriteLine();
                     }
+
+                    Console.WriteLine("Move which direction? Input selection and press Enter");
+                    Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                    Console.WriteLine();
                 }
 
-              
+
                 if (room.ContainsMonster() == true)
                 {
                     monsterToFight = room.GetMonster();
+                    deadMonster = room.GetMonster();
+
                     if (monsterToFight.GetHealth() > 0)
                     {
                         Battle.BeginBattle(Wizert, monsterToFight);
                     }
                     if (monsterToFight.GetHealth() <= 0)
                     {
-                        Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                        //room.SetRoomContainsMonster(false);
+                        Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
+                        Console.WriteLine();
+                        if (monsterToFight.GetHasItem() == true)
+                        {
+                            Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)} drops a potion!");
+                            monsterToFight.UsePotion(monsterToFight.GetItemType(), Wizert);
+                            monsterToFight.SetHasItem(false);
+                        }
                     }
                 }
             }
 
                 if (direction == "a")
                 {
-                    nextArray = array[wizertX_Coord, wizertY_Coord - 1];
+                Console.Clear();
+                nextArray = array[wizertX_Coord, wizertY_Coord - 1];
 
 
                     if (nextArray.Equals(wall))
                     {
                         //isWall = true;
-                        Console.WriteLine("You have ran into a wall");
-                        array[wizertX_Coord, wizertY_Coord + 1] = playerPos;
+                        Console.WriteLine("Your step is impeded as you walk into a fungus covered wall");
+                        Console.WriteLine();
+                        Console.WriteLine("Move which direction? Input selection and press Enter");
+                        Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                        Console.WriteLine();
+                    //array[wizertX_Coord, wizertY_Coord + 1] = playerPos;
 
-                    }
+                }
 
                     if (nextArray.Equals(exit))
                     {
                         Console.WriteLine("You find the exit! Escape? Y/N");
                         string prompt = Console.ReadLine();
-                        if (prompt == "y")
-                        {
-                            victory = true;
+                    if (prompt == "y")
+                    {
+                        Console.WriteLine("Escape to daylight!");
+                        victory = true;
+                        Wizert.SetMP(200);
+                        Wizert.SetHP(100);
 
-
-                        }
                     }
+                    else if (prompt == "n")
+                    {
+                        Console.WriteLine("The Wizert turns his back on the daylight and returns to the dungeon. A grim reminder that most who turn their back on the light never again find it...");
+                    }
+                }
 
                     //Move player
                     else if (!(nextArray.Equals(wall)))
@@ -617,23 +696,44 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine(room.PrintHallRoom());
                     }
-                    else if (room.GetRoomType() == "Spawn")
+
+                    Console.WriteLine();
+
+                    if (room.GetPotion() == true)
                     {
-                        Console.WriteLine(room.PrintSpawnRoom());
+                        room.UsePotion(room.GetPotionType(), Wizert);
+                        room.SetPotion(false);
+                        Console.WriteLine();
                     }
+
+
+                    Console.WriteLine("Move which direction? Input selection and press Enter");
+                    Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                    Console.WriteLine();
                 }
 
-                
+
                 if (room.ContainsMonster() == true)
                 {
                     monsterToFight = room.GetMonster();
+                    deadMonster = room.GetMonster();
+
                     if (monsterToFight.GetHealth() > 0)
                     {
                         Battle.BeginBattle(Wizert, monsterToFight);
                     }
                     if (monsterToFight.GetHealth() <= 0)
                     {
-                        Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                        //room.SetRoomContainsMonster(false);
+                        Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
+                        Console.WriteLine();
+
+                        if (monsterToFight.GetHasItem() == true)
+                        {
+                            Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)} drops a potion!");
+                            monsterToFight.UsePotion(monsterToFight.GetItemType(), Wizert);
+                            monsterToFight.SetHasItem(false);
+                        }
                     }
                 }
 
@@ -641,30 +741,40 @@ namespace CIS129FinalProject
 
                 if (direction == "w")
                 {
-                    nextArray = array[wizertX_Coord - 1, wizertY_Coord];
+                Console.Clear();
+                nextArray = array[wizertX_Coord - 1, wizertY_Coord];
 
 
                     if (nextArray.Equals(wall))
                     {
                         //isWall = true;
-                        Console.WriteLine("You have ran into a wall");
-                        array[wizertX_Coord + 1, wizertY_Coord] = playerPos;
-                        //currentArray = Wizert;
+                        Console.WriteLine("You place your hand on a body temperature wall.");
+                        Console.WriteLine();
+                        Console.WriteLine("Move which direction? Input selection and press Enter");
+                        Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                        Console.WriteLine();
+                    // array[wizertX_Coord + 1, wizertY_Coord] = playerPos;
+                    //currentArray = Wizert;
 
-                    }
+                }
 
                     if (nextArray.Equals(exit))
                     {
                         Console.WriteLine("You find the exit! Escape? Y/N");
                         string prompt = Console.ReadLine();
-                        if (prompt == "y")
-                        {
-                            victory = true;
+                    if (prompt == "y")
+                    {
+                        Console.WriteLine("Escape to daylight!");
+                        victory = true;
+                        Wizert.SetMP(200);
+                        Wizert.SetHP(100);
 
-
-
-                        }
                     }
+                    else if (prompt == "n")
+                    {
+                        Console.WriteLine("The Wizert turns his back on the daylight and returns to the dungeon. A grim reminder that most who turn their back on the light never again find it...");
+                    }
+                }
 
                     
                     //Move player
@@ -696,25 +806,51 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine(room.PrintHallRoom());
                     }
-                    else if (room.GetRoomType() == "Spawn")
+
+                    Console.WriteLine();
+
+                    if (room.GetPotion() == true)
                     {
-                        Console.WriteLine(room.PrintSpawnRoom());
+                        room.UsePotion(room.GetPotionType(), Wizert);
+                        room.SetPotion(false);
+                        Console.WriteLine();
                     }
+
+
+                    Console.WriteLine("Move which direction? Input selection and press Enter");
+                    Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
+                    Console.WriteLine();
                 }
 
-     
+
                 if (room.ContainsMonster() == true)
                 {
                     monsterToFight = room.GetMonster();
+                    deadMonster = room.GetMonster();
+
                     if (monsterToFight.GetHealth() > 0)
                     {
                         Battle.BeginBattle(Wizert, monsterToFight);
                     }
                     if (monsterToFight.GetHealth() <= 0)
                     {
-                        Console.WriteLine($"{monsterToFight.GetName(monsterToFight)} the {monsterToFight.GetMonsterType(monsterToFight)}'s corpse lays at your feet");
+                        //room.SetRoomContainsMonster(false);
+                        Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
+                        Console.WriteLine();
+
+                        if (monsterToFight.GetHasItem() == true)
+                        {
+                            Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)} drops a potion!");
+                            monsterToFight.UsePotion(monsterToFight.GetItemType(), Wizert);
+                            monsterToFight.SetHasItem(false);
+                        }
                     }
                 }
+                //else if (room.ContainsMonster() == false)
+                //{
+                //    Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
+
+                //}
             }
             }
 

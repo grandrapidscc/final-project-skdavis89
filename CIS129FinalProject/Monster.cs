@@ -13,13 +13,14 @@ namespace CIS129FinalProject
         private int _maxHP;
         private int _currentHP;
         private bool _hasItem;
+        private string _itemType;
         private string _roomType;
         private int goblinAttackPower = 2;
         private int orcAttackPower = 3;
         private int bansheeAttackPower = 5;
         private int monsterAttackPower;
         private bool _isMonster;
-        private Potion potion;
+        //private Potion potion;
         Monster monster;
 
 
@@ -39,7 +40,7 @@ namespace CIS129FinalProject
 
         
 
-        public Monster(bool isMonster, string name, string monsterType, bool hasItem, string roomType)
+        public Monster(bool isMonster, string name, string monsterType, bool hasItem, string? itemType)
         {
             _isMonster = isMonster;
             _name = name;
@@ -71,11 +72,25 @@ namespace CIS129FinalProject
             //potion = aPotion;
             _hasItem = hasItem;
 
-            _roomType = roomType;
+            _itemType = itemType;
         }
 
 
 
+        public bool GetHasItem ()
+        {
+            return _hasItem;
+        }
+
+        public bool SetHasItem(bool setHasItem)
+        {
+            return _hasItem = setHasItem;
+        }
+
+        public string GetItemType()
+        {
+            return _itemType;
+        }
 
         public string GetMonsterRoom()
         {
@@ -128,23 +143,75 @@ namespace CIS129FinalProject
             return monsterAttackPower;
         }
 
+        public void UsePotion(string aPotionType, Hero wizert)
+        {
+            string potionType;
+            int missingHealth = wizert.GetMaxHP() - wizert.GetCurrentHP();
+            int missingMana = wizert.GetMaxMP() - wizert.GetCurrentMP();
+            if (aPotionType == "hp")
+            {
+                if (missingHealth >= 10)
+                {
+                    Console.WriteLine("Wizert finds health potion! 10 health restored!");
+                    Console.WriteLine();
+                    wizert.SetHealth(wizert.GetCurrentHP() + 10);
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+                else
+                {
+                    Console.WriteLine("Wizert finds health potion! The effects are diminished...");
+                    Console.WriteLine();
+                    wizert.SetHealth(wizert.GetMaxHP());
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+                Console.WriteLine();
+
+            }
+            if (aPotionType == "mp")
+
+                if (missingMana >= 20)
+                {
+                    Console.WriteLine("Wizert finds magic potion! 20 mana restored!");
+                    Console.WriteLine();
+                    wizert.SetHealth(wizert.GetCurrentMP() + 20);
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+                else
+                {
+                    Console.WriteLine("Wizert finds mana potion! The effects are diminished...");
+                    Console.WriteLine();
+                    wizert.SetMP(wizert.GetMaxMP());
+                    Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
+                    Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                }
+
+
+
+        }
+
         public void Attack()
         {
             if (_monsterType == "Goblin")
             {
                 Console.WriteLine($"{_name} the {_monsterType} Body Slam's Wizert, dealing 2 damage!");
+                Console.WriteLine();
                 //subtract 2 health from Wizert
             }
 
             if (_monsterType == "Orc")
             {
                 Console.WriteLine($"{_name} the {_monsterType} Cleaves Wizert, dealing 3 damage!");
+                Console.WriteLine();
                 //subtract 3 health from Wizert
             }
 
             if (_monsterType == "Banshee")
             {
                 Console.WriteLine($"{_name} the {_monsterType} Screeches, dealing 5 damage to the Wizert");
+                Console.WriteLine();
                 //subtract 5 health from Wizert
             }
         }

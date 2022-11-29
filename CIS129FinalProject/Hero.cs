@@ -19,6 +19,10 @@ namespace CIS129FinalProject
         private int currentMP;
         private int xCoord;
         private int yCoord;
+        private bool _isPotion;
+        private string _potionType;
+        private int _potionHealthRestored;
+        private int _potionMagicRestored;
 
         public string FindType()
         {
@@ -45,6 +49,33 @@ namespace CIS129FinalProject
             return currentMP;
         }
 
+        public int SetMP(int setMP)
+        {
+            return currentMP = setMP;
+        }
+
+        public int SetHP(int setHP)
+        {
+            return currentHP = setHP;
+        }
+
+        public bool GetIsPotion()
+        {
+            return _isPotion;
+        }
+
+        public bool SetIsPotion(bool isPotion_true_false)
+        {
+            return _isPotion = isPotion_true_false;
+        }
+
+
+        public Hero(bool isPotion, string potionType)
+        {
+            _isPotion = isPotion;
+            _potionType = potionType;
+        }
+
         public Hero(string name, string type, int hp, int mp)
         {
             _name = name;
@@ -55,6 +86,44 @@ namespace CIS129FinalProject
             currentMP = mp;
         }
 
+        //Potion
+        //public void UsePotion()
+        //{
+        //    if (_potionType == "hp")
+        //    {
+        //        _potionHealthRestored = 10;
+
+
+        //        if (currentHP <= (_maxHP - 10))
+        //        {
+        //            currentHP = _maxHP;
+        //            Console.WriteLine($"Potion heals {_type}'s health!");
+        //            Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
+        //        }
+        //        else if (currentHP <= _maxHP)
+        //        {
+        //            currentHP += _potionHealthRestored;
+        //            Console.WriteLine($"Potion heals {_type}'s health by 10!");
+        //            Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine($"{_type} finds potion, but its effect is merely psychological...");
+        //            _isPotion = false;
+        //        }
+        //    }
+
+
+        //    if (_potionType == "mp")
+        //    {
+        //        _potionMagicRestored = 20;
+        //    }
+
+
+        //}
+
+
+        //Wizert
         public void CastFireball() //costs 3 mp, deals 5 damage
         {
             if (currentMP >= 3) 
