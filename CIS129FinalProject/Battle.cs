@@ -25,11 +25,12 @@ namespace CIS129FinalProject
             //while (enemyDefeated == false)
             {
 
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + " appears!");
+                Console.WriteLine(enemy.GetName(enemy) + "'s current health: " + enemy.GetHealth() + "/" + enemy.GetMaxHP());
                 Console.WriteLine();
                 Console.WriteLine("Wizert current health: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
-                Console.WriteLine("Wizert mana: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                Console.WriteLine("Wizert current mana: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                 Console.WriteLine();
 
                 while (wizert.GetHealth() > 0 && enemy.GetHealth() > 0)
@@ -38,6 +39,8 @@ namespace CIS129FinalProject
                     if (enemy.GetHealth() > 0)
                     {
                         enemy.Attack();
+                        Console.WriteLine(enemy.GetName(enemy) + "'s current health: " + enemy.GetHealth() + "/" + enemy.GetMaxHP());
+                        Console.WriteLine();
                         wizert.SetHealth(wizert.GetHealth() - enemy.GetMonsterAttackPower(enemy));
                         if (wizert.GetCurrentHP() <= 0)
                         {
@@ -46,13 +49,14 @@ namespace CIS129FinalProject
                             break;             
                         }
                         Console.WriteLine("Wizert current health: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
-                        Console.WriteLine("Wizert mana: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                        Console.WriteLine("Wizert current mana: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                         Console.WriteLine();
 
                     }
                     else
                     {
                         Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + " defeated!");
+
                         enemyDefeated = true;
                     }
                     //Console.WriteLine("press 1 to use fireball, 2 to heal, or 3 to flee");
@@ -80,12 +84,13 @@ namespace CIS129FinalProject
                         }
                         else
                         {
-                            Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + "'s current health: " + enemy.GetHealth());
+                            Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + "'s current health: " + enemy.GetHealth() + "/" + enemy.GetMaxHP());
                         }
                     }
                     else if (command == "2")
                     {
                         wizert.CastHeal();
+                        Console.WriteLine();
                     }
 
                     else if (command == "3")
@@ -95,11 +100,15 @@ namespace CIS129FinalProject
                         if (chance == 0)
                         {
                             Console.WriteLine("Wizert flees the battle!");
+                            Console.WriteLine();
+                            Console.WriteLine("Move which direction? Input selection and press Enter");
+                            Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
                             break;
                         }
                         else
                         {
                             Console.WriteLine("Wizert attempts to flee the battle against " + enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + ", but fails!");
+                            Console.WriteLine();
                         }
                         
                     }
@@ -108,20 +117,6 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine($"{command} is not a known spell, Wizert flinches!");
                     }
-
-                    //if (enemy.GetHealth() > 0)
-                    //{
-                    //    enemy.Attack();
-                    //    wizert.SetHealth(wizert.GetHealth() - enemy.GetMonsterAttackPower(enemy));
-                    //    Console.WriteLine("current health: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
-
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + " defeated!");
-                    //    enemyDefeated = true;
-                    //}
-
                 }
             }
         }

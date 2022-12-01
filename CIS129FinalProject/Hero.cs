@@ -86,41 +86,6 @@ namespace CIS129FinalProject
             currentMP = mp;
         }
 
-        //Potion
-        //public void UsePotion()
-        //{
-        //    if (_potionType == "hp")
-        //    {
-        //        _potionHealthRestored = 10;
-
-
-        //        if (currentHP <= (_maxHP - 10))
-        //        {
-        //            currentHP = _maxHP;
-        //            Console.WriteLine($"Potion heals {_type}'s health!");
-        //            Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
-        //        }
-        //        else if (currentHP <= _maxHP)
-        //        {
-        //            currentHP += _potionHealthRestored;
-        //            Console.WriteLine($"Potion heals {_type}'s health by 10!");
-        //            Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine($"{_type} finds potion, but its effect is merely psychological...");
-        //            _isPotion = false;
-        //        }
-        //    }
-
-
-        //    if (_potionType == "mp")
-        //    {
-        //        _potionMagicRestored = 20;
-        //    }
-
-
-        //}
 
 
         //Wizert
@@ -131,13 +96,14 @@ namespace CIS129FinalProject
                 //Console.WriteLine($"{_type} casts Fireball! 5 damage dealt to enemy");
                 //Thread.Sleep(1500);
                 currentMP = currentMP - 3;
-                Console.WriteLine($"{_type}'s MP remaining: {currentMP}/{_maxMP}");
+                Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
+                Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
                 Console.WriteLine();
                 
             }
             else
             {
-                Console.WriteLine("Not enough MP!");
+                Console.WriteLine("Not enough mana!");
                 Console.WriteLine();
             }
         }
@@ -154,8 +120,8 @@ namespace CIS129FinalProject
                     Console.WriteLine($"{_type} casts Heal! {_type} heals for 3 HP!");
                     currentHP = currentHP + 3;
                     currentMP = currentMP - 5;
-                    Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s MP remaining: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
+                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
                 else if (currentHP <= (_maxHP - 2))
@@ -164,8 +130,8 @@ namespace CIS129FinalProject
                     overheal = _maxHP - 2;
                     Console.WriteLine($"{_type} casts Heal for {actualAmountHealed}! {_type} overheals by {overheal} HP.");
                     currentMP = currentMP - 5;
-                    Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s MP remaining: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
+                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
                 else if (currentHP <= (_maxHP - 1))
@@ -174,8 +140,8 @@ namespace CIS129FinalProject
                     overheal = _maxHP - 1;
                     Console.WriteLine($"{_type} casts Heal for {actualAmountHealed}! {_type} overheals by {overheal} HP.");
                     currentMP = currentMP - 5;
-                    Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s MP remaining: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
+                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
                 else if (currentHP == _maxHP)
@@ -184,15 +150,15 @@ namespace CIS129FinalProject
                     overheal = 3;
                     Console.WriteLine($"{_type} casts Heal for {actualAmountHealed}! {_type} overheals by {overheal} HP.");
                     currentMP = currentMP - 5;
-                    Console.WriteLine($"{_type}'s HP remaining: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s MP remaining: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
+                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
 
             }
             else
             {
-                Console.WriteLine("Not enough MP!");
+                Console.WriteLine("Not enough mana!");
                 Console.WriteLine();
             }
         }
@@ -268,22 +234,6 @@ namespace CIS129FinalProject
                 return potionType;
             }
 
-            public void UsePotion()
-            {
-                int HPoverheal;
-                int HPactualAmountHealed;
-                int MPoverheal;
-                int MPactualAmountHealed;
-
-                if (potionType == "hp")
-                {
-                    
-                }
-            }
         }
     }
-
-    
-
-
 }

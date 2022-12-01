@@ -17,9 +17,6 @@ namespace CIS129FinalProject
         private bool _isExit;
         private object _location;
         private string _potionType;
-        //Monster realBadGuy = new Monster(true, "Bad Guy", "Orc", false, "SW");
-        //Monster banshee1 = new Monster(true, "Banz", "Banshee", false, "Hall");
-        //Room room1 = new Room(false, false);
         Room tempRoom;
 
         //Wall
@@ -91,10 +88,6 @@ namespace CIS129FinalProject
             _wizertOccupied = isOccupied;
         }
 
-        //public Room AddEnemy(Monster enemy)
-        //{
-        //    return enemy;
-        //}
 
         public Room GetRoom(object roomLocation)
         {
@@ -190,15 +183,6 @@ namespace CIS129FinalProject
 
         }
 
-        public string SpawnRoom()
-        {
-            return "Light from above shines through the hole you fell through, illuminating the damp wretched ground";
-        }
-
-        public string PrintSpawnRoom()
-        {
-            return "Light from above shines through the hole you fell through, illuminating the damp wretched ground";
-        }
 
         public string PrintNWRoom()
         {
@@ -225,23 +209,6 @@ namespace CIS129FinalProject
             return "You feel ornate marble flooring under your feet, covered in a thick layer of dust, blood, and fur.";
         }
 
-        //Monster Constructor
-        //public Room MonsterRoom(Monster monster, string roomType, //ref to Monster?
-        //    bool hasPotion, bool isWall)
-        //{
-        //    _monster = monster;
-        //    _roomType = roomType;
-        //    //_wizertOccupied = wizertOccupied;
-        //    _hasPotion = hasPotion;
-        //    _isWall = isWall;
-        //}
-
-
-
-        //public Monster SetMonster(Room room)
-        //{
-        //    _monster = room.;
-        //}
         public Monster GetMonster()
         {
             return _monster;

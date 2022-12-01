@@ -40,7 +40,7 @@ namespace CIS129FinalProject
 
         
 
-        public Monster(bool isMonster, string name, string monsterType, bool hasItem, string? itemType)
+        public Monster(bool isMonster, string name, string monsterType, bool hasItem, string? itemType, string? roomType)
         {
             _isMonster = isMonster;
             _name = name;
@@ -73,9 +73,16 @@ namespace CIS129FinalProject
             _hasItem = hasItem;
 
             _itemType = itemType;
+
+            _roomType = roomType;
         }
 
 
+
+        public int GetMaxHP ()
+        {
+            return _maxHP;
+        }
 
         public bool GetHasItem ()
         {
@@ -187,6 +194,7 @@ namespace CIS129FinalProject
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
                     Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                 }
+            Console.WriteLine();
 
 
 
@@ -197,25 +205,23 @@ namespace CIS129FinalProject
             if (_monsterType == "Goblin")
             {
                 Console.WriteLine($"{_name} the {_monsterType} Body Slam's Wizert, dealing 2 damage!");
-                Console.WriteLine();
-                //subtract 2 health from Wizert
+
             }
 
             if (_monsterType == "Orc")
             {
                 Console.WriteLine($"{_name} the {_monsterType} Cleaves Wizert, dealing 3 damage!");
-                Console.WriteLine();
-                //subtract 3 health from Wizert
+
             }
 
             if (_monsterType == "Banshee")
             {
                 Console.WriteLine($"{_name} the {_monsterType} Screeches, dealing 5 damage to the Wizert");
-                Console.WriteLine();
-                //subtract 5 health from Wizert
             }
         }
+
     }
+
 
 
 
