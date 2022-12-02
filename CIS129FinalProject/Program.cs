@@ -33,7 +33,7 @@ while (playAgain == true)
         Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
         direction = Console.ReadLine().ToLower();
         floorPlan.Move(direction, testMap, ref victory, ref defeat, dummyRoom);
-        //Console.WriteLine(floorPlan.GetPlayerPosition());
+        Console.WriteLine(floorPlan.GetPlayerPosition());
         //floorPlan.PrintMap(testMap);
     }
 

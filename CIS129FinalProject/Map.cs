@@ -38,7 +38,6 @@ namespace CIS129FinalProject
         Monster goblin4;
         Monster goblin5;
         Monster goblin6;
-        Monster goblin7;
 
         //Orcs
         Monster orc1;
@@ -56,7 +55,6 @@ namespace CIS129FinalProject
 
 
         //Manually Populate Rooms
-        internal Room SpawnRoom;
 
         Room Hall_1_3;
         Room Hall_2_3;
@@ -105,7 +103,7 @@ namespace CIS129FinalProject
             array[1, 0] = wall;
             array[1, 1] = NW_1_1 = new Room(true, goblin1 = new Monster(true, "Thel'Kuz", "Goblin", false, null, "NW"), "NW", null, false, false);
             array[1, 2] = NW_1_2 = new Room(true, orc2 = new Monster (true, "Banthomir", "Orc", false, null, "NW"), "NW", null, false, false);
-            array[1, 3] = Hall_1_3 = new Room(true, goblin6 = new Monster (true, "D'yer", "Goblin", false, null, "Hall"), "Hall", null, false, false);
+            array[1, 3] = Hall_1_3 = new Room(true, goblin6 = new Monster (true, "Hezza", "Goblin", false, null, "Hall"), "Hall", null, false, false);
             array[1, 4] = NE_1_4 = new Room(true, banshee3 = new Monster (true, "Myn'dir", "Banshee", false, null, "NE"), "NE", null, false, false);
             array[1, 5] = NE_1_5 = new Room(true, banshee4 = new Monster (true, "Vallah", "Banshee", true, "hp", "NE"), "NE", null, false, false);
             array[1, 6] = wall;
@@ -123,7 +121,7 @@ namespace CIS129FinalProject
             array[3, 2] = Hall_3_2 = new Room(false, null, "Hall", null, false, false);
             array[3, 3] = Hall_3_3_Potion = new Room(false, null, "Hall", "hp", true, false);
             array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster(true, "Oritz", "Goblin", false, null, "Hall"), "Hall", null, false, false);
-            array[3, 5] = Hall_3_5 = new Room(true, banshee5 = new Monster(true, "Wexyl", "Banshee", false, null, "Hall"), "Hall", null, false, false);
+            array[3, 5] = Hall_3_5 = new Room(true, banshee5 = new Monster(true, "Istor", "Banshee", false, null, "Hall"), "Hall", null, false, false);
             array[3, 6] = wall;
 
             array[4, 0] = wall;
@@ -131,7 +129,7 @@ namespace CIS129FinalProject
             array[4, 2] = SW_4_2 = new Room(true, banshee2 = new Monster (true, "Vy'shel", "Banshee", false, null, "SW"), "SW", null, false, false);
             array[4, 3] = Hall_4_3 = new Room(true, goblin5 = new Monster (true, "Yarick", "Goblin", false, null, "Hall"), "Hall", null, false, false);
             array[4, 4] = SE_4_4 = new Room(true, orc1 = new Monster(true, "Yira", "Orc", false, null, "SE"), "SE", null, false, false);
-            array[4, 5] = SE_4_5 = new Room(true, banshee6 = new Monster(true, "Trazon", "Banshee", false, null, "SE"), "SE", null, false, false);
+            array[4, 5] = SE_4_5 = new Room(true, banshee6 = new Monster(true, "Tydrea", "Banshee", false, null, "SE"), "SE", null, false, false);
             array[4, 6] = wall;
 
             array[5, 0] = wall;
@@ -187,11 +185,7 @@ namespace CIS129FinalProject
 
 
             playerPos = array[spawn1, spawn2];
-
-
-            SpawnRoom = new Room(true, "Spawn", true, false, false);
             
-
 
             wizertX_Coord = spawn1;
             wizertY_Coord = spawn2;
@@ -204,7 +198,7 @@ namespace CIS129FinalProject
         }
 
 
-
+        //Testing Purposes
         public void PrintMap(object[,] map)
         {
             int iterator = 0;

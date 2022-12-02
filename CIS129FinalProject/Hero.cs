@@ -9,25 +9,12 @@ namespace CIS129FinalProject
 
     public class Hero
     {
-        int wizertX_Coord;
-        int wizertY_Coord;
         private string _name;
         private string _type;
         private int _maxHP;
         private int _maxMP;
         public int currentHP;
         private int currentMP;
-        private int xCoord;
-        private int yCoord;
-        private bool _isPotion;
-        private string _potionType;
-        private int _potionHealthRestored;
-        private int _potionMagicRestored;
-
-        public string FindType()
-        {
-            return _type;
-        }
 
         public int GetMaxHP()
         {
@@ -59,22 +46,6 @@ namespace CIS129FinalProject
             return currentHP = setHP;
         }
 
-        public bool GetIsPotion()
-        {
-            return _isPotion;
-        }
-
-        public bool SetIsPotion(bool isPotion_true_false)
-        {
-            return _isPotion = isPotion_true_false;
-        }
-
-
-        public Hero(bool isPotion, string potionType)
-        {
-            _isPotion = isPotion;
-            _potionType = potionType;
-        }
 
         public Hero(string name, string type, int hp, int mp)
         {
@@ -93,8 +64,6 @@ namespace CIS129FinalProject
         {
             if (currentMP >= 3) 
             {
-                //Console.WriteLine($"{_type} casts Fireball! 5 damage dealt to enemy");
-                //Thread.Sleep(1500);
                 currentMP = currentMP - 3;
                 if (currentMP < 0)
                 {
@@ -181,38 +150,6 @@ namespace CIS129FinalProject
             }
         }
 
-        public void Set_Wizert_X_Coord(int xCoord)
-        {
-            wizertX_Coord = xCoord;
-        }
-
-        public void Set_Wizert_Y_Coord(int yCoord)
-        {
-            wizertY_Coord = yCoord;
-        }
-
-        public int Get_Wizert_X_Coord()
-        {
-            return wizertX_Coord;
-        }
-
-        public int Get_Wizert_Y_Coord()
-        {
-            return wizertY_Coord;
-        }
-
-
-        public void Move(string direction)
-        {
-            int x;
-            int y;
-
-            if (direction == "s")
-            {
-               // y = Set_Wizert_Y_Coord(Get_Wizert_Y_Coord();
-            }
-        }
-
         public int GetHealth()
         {
             return currentHP;
@@ -221,37 +158,6 @@ namespace CIS129FinalProject
         public int SetHealth(int setHealth)
         {
             return currentHP = setHealth;
-        }
-
-
-
-        //POTION
-        public class Potion
-        {
-            int health;
-            int magic;
-            string potionType;
-
-
-            public Potion(string type)
-            {
-                if (type == "hp")
-                {
-                    health = 10;
-                    potionType = type;
-                }
-                else if (type == "mp")
-                {
-                    magic = 20;
-                    potionType = type;
-                }
-            }
-
-            public string GetPotionType()
-            {
-                return potionType;
-            }
-
         }
     }
 }

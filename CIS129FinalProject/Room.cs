@@ -11,41 +11,18 @@ namespace CIS129FinalProject
         private bool _hasMonster;
         private Monster _monster;
         private string _roomType;
-        private bool _wizertOccupied;
         private bool _hasPotion;
         private bool _isWall;
         private bool _isExit;
-        private object _location;
         private string _potionType;
-        Room tempRoom;
 
         //Wall
-        public Room(bool isWall, bool isExit)//, bool containsMonster)
+        public Room(bool isWall, bool isExit)
         {
             _isWall = isWall;
             _isExit = isExit;
-            //_hasMonster = containsMonster;
         }
 
-        public Room(bool isWall, bool isExit, string roomType)
-        {
-            _isWall = isWall;
-            _isExit = isExit;
-            _roomType = roomType;
-        }
-
-        //public class Room : Monster (Monster a)
-
-
-        public Room(bool hasMonster, string roomType, bool wizertOccupied, 
-            bool hasPotion, bool isWall)
-        {
-            _hasMonster = hasMonster;
-            _roomType = roomType;
-            _wizertOccupied = wizertOccupied;
-            _hasPotion = hasPotion;
-            _isWall = isWall;
-        }
 
         public Room(bool hasMonster, Monster? monster, string roomType, string? potionType,
              bool hasPotion, bool isWall)
@@ -54,50 +31,11 @@ namespace CIS129FinalProject
             _monster = monster;
             _roomType = roomType;
             _potionType = potionType;
-            //_wizertOccupied = wizertOccupied;
             _hasPotion = hasPotion;
             _isWall = isWall;
         }
 
-        public Room(Monster monster, string roomType, bool hasPotion, bool isWall)
-        {
-            _monster = monster;
-            _roomType = roomType;
-            _hasPotion = hasPotion;
-            _isWall = isWall;
-        }
 
-        public Room(string roomType, bool hasPotion, bool isWall)
-        {
-            //_monster = monster;
-            _roomType = roomType;
-            _hasPotion = hasPotion;
-            _isWall = isWall;
-        }
-
-        //spawn room
-        public Room(object location, string roomType, bool wizertOccupied)
-        {
-            _location = location;
-            _roomType = roomType;
-            _wizertOccupied = wizertOccupied;
-        }
-
-        public void SetOccupied(bool isOccupied)
-        {
-            _wizertOccupied = isOccupied;
-        }
-
-
-        public Room GetRoom(object roomLocation)
-        {
-            return tempRoom;
-        }
-
-        public void SetRoom(object room)
-        {
-            room = room;
-        }
 
         public bool GetPotion()
         {
@@ -114,17 +52,6 @@ namespace CIS129FinalProject
             return _potionType;
         }
 
-        public string SetPotionType(string potionType)
-        {
-            return _potionType = potionType;
-        }
-
-
-        public bool GetOccupied()
-        {
-            return _wizertOccupied;
-        }
-
         public string GetRoomType ()
         {
             return _roomType;
@@ -133,11 +60,6 @@ namespace CIS129FinalProject
         public bool ContainsMonster()
         {
             return _hasMonster;
-        }
-
-        public bool SetRoomContainsMonster(bool isMonster)
-        {
-            return isMonster;
         }
 
         public void UsePotion(string aPotionType, Hero wizert)
@@ -168,7 +90,7 @@ namespace CIS129FinalProject
                 if (missingMana >= 20)
                 {
                     Console.WriteLine("Wizert finds magic potion! 20 magicka restored!");
-                    wizert.SetHealth(wizert.GetCurrentMP() + 20);
+                    wizert.SetMP(wizert.GetCurrentMP() + 20);
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
                     Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                 }

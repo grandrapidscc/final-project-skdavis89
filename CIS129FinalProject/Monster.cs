@@ -15,30 +15,11 @@ namespace CIS129FinalProject
         private bool _hasItem;
         private string _itemType;
         private string _roomType;
-        private int goblinAttackPower = 2;
-        private int orcAttackPower = 3;
-        private int bansheeAttackPower = 5;
         private int monsterAttackPower;
         private bool _isMonster;
-        //private Potion potion;
         Monster monster;
 
 
-
-        
-
-        public Monster(string name, string monsterType, int maxHP, int currentHP, bool hasItem)
-        {
-            _name = name;
-            _monsterType = monsterType;
-            _maxHP = maxHP;
-            _currentHP = currentHP;
-            _hasItem = hasItem;
-        }
-
-        
-
-        
 
         public Monster(bool isMonster, string name, string monsterType, bool hasItem, string? itemType, string? roomType)
         {
@@ -67,9 +48,6 @@ namespace CIS129FinalProject
                 monsterAttackPower = 5;
             }
 
-
-
-            //potion = aPotion;
             _hasItem = hasItem;
 
             _itemType = itemType;
@@ -99,31 +77,6 @@ namespace CIS129FinalProject
             return _itemType;
         }
 
-        public string GetMonsterRoom()
-        {
-            return _roomType;
-        }
-
-        public bool GetIsMonster()
-        {
-            return _isMonster;
-        }
-
-        public bool SetIsMonster(bool isMonster_T_or_F)
-        {
-            return _isMonster = isMonster_T_or_F;
-        }
-
-        public Monster GetMonster()
-        {
-            return monster;
-        }
-
-        //public int GetHealth
-        //{
-        //    get { return _maxHP; }
-        //    set { _maxHP = value; }
-        //}
 
         public int GetHealth()
         {
@@ -180,7 +133,7 @@ namespace CIS129FinalProject
 
                 if (missingMana >= 20)
                 {
-                    Console.WriteLine("Wizert finds magic potion! 20 magicka restored!");
+                    Console.WriteLine("Wizert finds magicka potion! 20 magicka restored!");
                     Console.WriteLine();
                     wizert.SetMP(wizert.GetCurrentMP() + 20);
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
@@ -219,28 +172,8 @@ namespace CIS129FinalProject
                 Console.WriteLine($"{_name} the {_monsterType} Screeches, dealing 5 damage to the Wizert");
             }
         }
-
     }
-
-
-
-
-
-    public class MonsterRoom
-    {
-        Monster monster;
-        private string _item; // later change to object?
-        private string _roomType;
-
-
-        //public MonsterRoom(Monster aMonster, string item, string roomType)
-        //{
-        //    monster = aMonster;
-        //    _item = item;
-        //    _roomType = roomType;
-        //}
-    }
-
-    //public (Monster monster, string monsterType, string roomType)
-    
 }
+
+    
+
