@@ -180,15 +180,15 @@ namespace CIS129FinalProject
 
                 if (missingMana >= 20)
                 {
-                    Console.WriteLine("Wizert finds magic potion! 20 mana restored!");
+                    Console.WriteLine("Wizert finds magic potion! 20 magicka restored!");
                     Console.WriteLine();
-                    wizert.SetHealth(wizert.GetCurrentMP() + 20);
+                    wizert.SetMP(wizert.GetCurrentMP() + 20);
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
                     Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                 }
                 else
                 {
-                    Console.WriteLine("Wizert finds mana potion! The effects are diminished...");
+                    Console.WriteLine("Wizert finds magicka potion! The effects are diminished...");
                     Console.WriteLine();
                     wizert.SetMP(wizert.GetMaxMP());
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());

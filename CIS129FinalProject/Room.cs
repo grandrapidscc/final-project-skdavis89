@@ -167,14 +167,14 @@ namespace CIS129FinalProject
 
                 if (missingMana >= 20)
                 {
-                    Console.WriteLine("Wizert finds magic potion! 20 mana restored!");
+                    Console.WriteLine("Wizert finds magic potion! 20 magicka restored!");
                     wizert.SetHealth(wizert.GetCurrentMP() + 20);
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
                     Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                 }
                 else
                 {
-                    Console.WriteLine("Wizert finds mana potion! The effects are diminished...");
+                    Console.WriteLine("Wizert finds magicka potion! The effects are diminished...");
                     wizert.SetMP(wizert.GetMaxMP());
                     Console.WriteLine("Wizert HP: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
                     Console.WriteLine("Wizert MP: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
@@ -196,17 +196,17 @@ namespace CIS129FinalProject
 
         public string PrintSWRoom()
         {
-            return "The room is so silent that you can hear your own breathing...at least you hope it is your own.";
+            return "The room is so silent that you can hear your own breathing, a moment of respite\n...until you remember you are holding your breath.";
         }
 
         public string PrintSERoom()
         {
-            return "A screeching sound is apparent, but you can not tell if it is near or echoing from a far away location";
+            return "A screeching sound is apparent, but you can not tell if it is near or echoing from a far away location.";
         }
 
         public string PrintHallRoom()
         {
-            return "You feel ornate marble flooring under your feet, covered in a thick layer of dust, blood, and fur.";
+            return "You feel ornate marble flooring under your feet, covered in a thick layer of dust and fur.";
         }
 
         public Monster GetMonster()

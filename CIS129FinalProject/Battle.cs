@@ -20,17 +20,13 @@ namespace CIS129FinalProject
         public static void BeginBattle(Hero wizert, Monster enemy)
         {
             string command;
-            bool enemyDefeated = false;
-            bool wizertDefeated = false;
-            //while (enemyDefeated == false)
-            {
 
-                //Console.Clear();
+            {
                 Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + " appears!");
                 Console.WriteLine(enemy.GetName(enemy) + "'s current health: " + enemy.GetHealth() + "/" + enemy.GetMaxHP());
                 Console.WriteLine();
                 Console.WriteLine("Wizert current health: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
-                Console.WriteLine("Wizert current mana: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                Console.WriteLine("Wizert current magicka: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                 Console.WriteLine();
 
                 while (wizert.GetHealth() > 0 && enemy.GetHealth() > 0)
@@ -44,28 +40,56 @@ namespace CIS129FinalProject
                         wizert.SetHealth(wizert.GetHealth() - enemy.GetMonsterAttackPower(enemy));
                         if (wizert.GetCurrentHP() <= 0)
                         {
-                            Console.WriteLine("Wizert defeated....");
-                            wizertDefeated = true;
+                            Console.WriteLine("Wizert suffers a fatal blow and collapses to the ground. Millenia of knowledge and wisdom lost needlessly.");
+                            Console.WriteLine("Will the body ever be recovered, or only be the last thing the next unfortunate soul sees?");
                             break;             
                         }
                         Console.WriteLine("Wizert current health: " + wizert.GetCurrentHP() + "/" + wizert.GetMaxHP());
-                        Console.WriteLine("Wizert current mana: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
+                        Console.WriteLine("Wizert current magicka: " + wizert.GetCurrentMP() + "/" + wizert.GetMaxMP());
                         Console.WriteLine();
 
                     }
                     else
                     {
                         Console.WriteLine(enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy) + " defeated!");
-
-                        enemyDefeated = true;
                     }
                     //Console.WriteLine("press 1 to use fireball, 2 to heal, or 3 to flee");
-                    Console.WriteLine();
-                    Console.WriteLine(" -------------        *     ");
-                    Console.WriteLine("| 1 to Attack |   *  <_>  * ");
-                    Console.WriteLine("| 2 to Heal   |       |     ");
-                    Console.WriteLine("| 3 to Flee   |       |     ");
-                    Console.WriteLine(" -------------              ");
+                    if (wizert.GetCurrentHP() >= 70)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(" -------------        *     ");
+                        Console.WriteLine("| 1 to Attack |   *  <_>  * ");
+                        Console.WriteLine("| 2 to Heal   |       |     ");
+                        Console.WriteLine("| 3 to Flee   |       |     ");
+                        Console.WriteLine(" -------------              ");
+                    }
+                    else if (wizert.GetCurrentHP() >= 45)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(" -------------             ");
+                        Console.WriteLine("| 1 to Attack |   *  <_>  * ");
+                        Console.WriteLine("| 2 to Heal   |       |     ");
+                        Console.WriteLine("| 3 to Flee   |       |     ");
+                        Console.WriteLine(" -------------              ");
+                    }
+                    else if (wizert.GetCurrentHP() >= 20)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(" -------------             ");
+                        Console.WriteLine("| 1 to Attack |   *  <_>   ");
+                        Console.WriteLine("| 2 to Heal   |       |     ");
+                        Console.WriteLine("| 3 to Flee   |       |     ");
+                        Console.WriteLine(" -------------              ");
+                    }
+                    else if (wizert.GetCurrentHP() > 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(" -------------             ");
+                        Console.WriteLine("| 1 to Attack |      <_>   ");
+                        Console.WriteLine("| 2 to Heal   |       |     ");
+                        Console.WriteLine("| 3 to Flee   |       |     ");
+                        Console.WriteLine(" -------------              ");
+                    }
 
 
                     command = Console.ReadLine();
@@ -73,9 +97,18 @@ namespace CIS129FinalProject
 
                     if (command == "1")
                     {
-                        Console.WriteLine("Wizert casts Fireball! 5 damage dealt to " + enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy));
-                        wizert.CastFireball();
-                        enemy.SetHealth(enemy.GetHealth() - 5);
+                        if (wizert.GetCurrentMP() >= 3)
+                        {
+                            Console.WriteLine("Wizert spends 3 magicka casting Fireball! 5 damage dealt to " + enemy.GetName(enemy) + " the " + enemy.GetMonsterType(enemy));
+                            wizert.CastFireball();
+                            enemy.SetHealth(enemy.GetHealth() - 5);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not enough magicka to cast Fireball!");
+                            Console.WriteLine();
+                        }
+
                         if (enemy.GetHealth() <= 0)
                         {
                             enemy.SetHealth(0);
@@ -90,7 +123,6 @@ namespace CIS129FinalProject
                     else if (command == "2")
                     {
                         wizert.CastHeal();
-                        Console.WriteLine();
                     }
 
                     else if (command == "3")
@@ -101,8 +133,6 @@ namespace CIS129FinalProject
                         {
                             Console.WriteLine("Wizert flees the battle!");
                             Console.WriteLine();
-                            Console.WriteLine("Move which direction? Input selection and press Enter");
-                            Console.WriteLine("W to move north, S to move south, A to move west, D to move east");
                             break;
                         }
                         else

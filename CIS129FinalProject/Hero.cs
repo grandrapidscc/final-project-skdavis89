@@ -96,14 +96,18 @@ namespace CIS129FinalProject
                 //Console.WriteLine($"{_type} casts Fireball! 5 damage dealt to enemy");
                 //Thread.Sleep(1500);
                 currentMP = currentMP - 3;
+                if (currentMP < 0)
+                {
+                    currentMP = 0;
+                }
                 Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
-                Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
+                Console.WriteLine($"{_type}'s current magicka: {currentMP}/{_maxMP}");
                 Console.WriteLine();
                 
             }
             else
             {
-                Console.WriteLine("Not enough mana!");
+                Console.WriteLine("Not enough magicka!");
                 Console.WriteLine();
             }
         }
@@ -117,48 +121,62 @@ namespace CIS129FinalProject
             {
                 if (currentHP <= (_maxHP - 3))
                 {
-                    Console.WriteLine($"{_type} casts Heal! {_type} heals for 3 HP!");
+                    Console.WriteLine($"{_type} spends 5 magicka casting Heal! {_type} heals for 3 HP!");
                     currentHP = currentHP + 3;
                     currentMP = currentMP - 5;
+                    if (currentMP < 0)
+                    {
+                        currentMP = 0;
+                    }
                     Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current magicka: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
-                else if (currentHP <= (_maxHP - 2))
+                else if (currentHP == (_maxHP - 2))
                 {
                     actualAmountHealed = _maxHP - currentHP;
-                    overheal = _maxHP - 2;
-                    Console.WriteLine($"{_type} casts Heal for {actualAmountHealed}! {_type} overheals by {overheal} HP.");
+                    overheal = actualAmountHealed - 1;
+                    Console.WriteLine($"{_type} spends 5 magicka casting Heal for 3 HP! {_type} overheals by {overheal} HP.");
+                    currentHP = currentHP + 2;
                     currentMP = currentMP - 5;
+                    if (currentMP < 0)
+                    {
+                        currentMP = 0;
+                    }
                     Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current magicka: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
-                else if (currentHP <= (_maxHP - 1))
+                else if (currentHP == (_maxHP - 1))
                 {
                     actualAmountHealed = _maxHP - currentHP;
-                    overheal = _maxHP - 1;
-                    Console.WriteLine($"{_type} casts Heal for {actualAmountHealed}! {_type} overheals by {overheal} HP.");
+                    overheal = actualAmountHealed + 1;
+                    Console.WriteLine($"{_type} spends 5 magicka casting Heal for 3 HP! {_type} overheals by {overheal} HP.");
+                    currentHP = currentHP + 1;
                     currentMP = currentMP - 5;
+                    if (currentMP < 0)
+                    {
+                        currentMP = 0;
+                    }
                     Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current magicka: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
                 else if (currentHP == _maxHP)
                 {
                     actualAmountHealed = _maxHP - currentHP;
                     overheal = 3;
-                    Console.WriteLine($"{_type} casts Heal for {actualAmountHealed}! {_type} overheals by {overheal} HP.");
+                    Console.WriteLine($"{_type} spends 5 magicka casting Heal for 3 HP! {_type} overheals by {overheal} HP.");
                     currentMP = currentMP - 5;
                     Console.WriteLine($"{_type}'s current health: {currentHP}/{_maxHP}");
-                    Console.WriteLine($"{_type}'s current mana: {currentMP}/{_maxMP}");
+                    Console.WriteLine($"{_type}'s current magicka: {currentMP}/{_maxMP}");
                     Console.WriteLine();
                 }
 
             }
             else
             {
-                Console.WriteLine("Not enough mana!");
+                Console.WriteLine("Not enough magicka to cast Heal!");
                 Console.WriteLine();
             }
         }
