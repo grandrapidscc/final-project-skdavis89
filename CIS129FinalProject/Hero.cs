@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace CIS129FinalProject
 {
@@ -56,7 +52,6 @@ namespace CIS129FinalProject
             currentHP = hp;
             currentMP = mp;
         }
-
 
 
         //Wizert

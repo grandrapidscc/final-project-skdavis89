@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+﻿
 
 namespace CIS129FinalProject
 {
@@ -16,8 +10,10 @@ namespace CIS129FinalProject
 
         bool isWall = false;
         bool hasMonster = false;
+        bool allEnemiesDefeated = false;
 
         Hero Wizert;
+        List<Monster> monsterList;
 
 
 
@@ -38,6 +34,8 @@ namespace CIS129FinalProject
         Monster goblin4;
         Monster goblin5;
         Monster goblin6;
+        Monster goblin7;
+        Monster goblin8;
 
         //Orcs
         Monster orc1;
@@ -103,7 +101,7 @@ namespace CIS129FinalProject
             array[1, 0] = wall;
             array[1, 1] = NW_1_1 = new Room(true, goblin1 = new Monster(true, "Thel'Kuz", "Goblin", false, null, "NW"), "NW", null, false, false);
             array[1, 2] = NW_1_2 = new Room(true, orc2 = new Monster (true, "Banthomir", "Orc", false, null, "NW"), "NW", null, false, false);
-            array[1, 3] = Hall_1_3 = new Room(true, goblin6 = new Monster (true, "Hezza", "Goblin", false, null, "Hall"), "Hall", null, false, false);
+            array[1, 3] = Hall_1_3 = new Room(true, goblin8 = new Monster (true, "Hezza", "Goblin", false, null, "Hall"), "Hall", null, false, false);
             array[1, 4] = NE_1_4 = new Room(true, banshee3 = new Monster (true, "Myn'dir", "Banshee", false, null, "NE"), "NE", null, false, false);
             array[1, 5] = NE_1_5 = new Room(true, banshee4 = new Monster (true, "Vallah", "Banshee", true, "hp", "NE"), "NE", null, false, false);
             array[1, 6] = wall;
@@ -113,20 +111,20 @@ namespace CIS129FinalProject
             array[2, 2] = NW_2_2 = new Room(true, goblin6 = new Monster(true, "H'ralm", "Goblin", false, null, "NW"), "NW", null, false, false);
             array[2, 3] = Hall_2_3 = new Room(false, null, "Hall", null, false, false);
             array[2, 4] = NE_2_4 = new Room(false, null, "NE", null, false, false);
-            array[2, 5] = NE_2_5 = new Room(false, null, "NE", null, false, false);
+            array[2, 5] = NE_2_5 = new Room(true, goblin7 = new Monster(true, "Tanagra", "Goblin", false, null, "NE"), "NE", null, false, false);
             array[2, 6] = wall;
 
             array[3, 0] = wall;
             array[3, 1] = Hall_3_1 = new Room(false, null, "Hall", null, false, false);
             array[3, 2] = Hall_3_2 = new Room(false, null, "Hall", null, false, false);
             array[3, 3] = Hall_3_3_Potion = new Room(false, null, "Hall", "hp", true, false);
-            array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster(true, "Oritz", "Goblin", false, null, "Hall"), "Hall", null, false, false);
-            array[3, 5] = Hall_3_5 = new Room(true, banshee5 = new Monster(true, "Istor", "Banshee", false, null, "Hall"), "Hall", null, false, false);
+            array[3, 4] = Hall_3_4 = new Room(true, goblin2 = new Monster(true, "Darmok", "Goblin", false, null, "Hall"), "Hall", null, false, false);
+            array[3, 5] = Hall_3_5 = new Room(true, banshee5 = new Monster(true, "Jalad", "Banshee", false, null, "Hall"), "Hall", null, false, false);
             array[3, 6] = wall;
 
             array[4, 0] = wall;
             array[4, 1] = SW_4_1 = new Room(true, goblin4 = new Monster (true, "Znul", "Goblin", false, null, "SW"), "SW", null, false, false);
-            array[4, 2] = SW_4_2 = new Room(true, banshee2 = new Monster (true, "Vy'shel", "Banshee", false, null, "SW"), "SW", null, false, false);
+            array[4, 2] = SW_4_2 = new Room(true, banshee2 = new Monster (true, "Vy'shel", "Banshee", true, "hp", "SW"), "SW", null, false, false);
             array[4, 3] = Hall_4_3 = new Room(true, goblin5 = new Monster (true, "Yarick", "Goblin", false, null, "Hall"), "Hall", null, false, false);
             array[4, 4] = SE_4_4 = new Room(true, orc1 = new Monster(true, "Yira", "Orc", false, null, "SE"), "SE", null, false, false);
             array[4, 5] = SE_4_5 = new Room(true, banshee6 = new Monster(true, "Tydrea", "Banshee", false, null, "SE"), "SE", null, false, false);
@@ -136,7 +134,7 @@ namespace CIS129FinalProject
             array[5, 1] = SW_5_1 = new Room(false, null, "SW", "mp", true, false);
             array[5, 2] = SW_5_2 = new Room(true, orc4 = new Monster (true, "Itheem", "Orc", false, null, "SW"), "SW", null, false, false);
             array[5, 3] = Hall_5_3 = new Room(false, null, "Hall", null, false, false);
-            array[5, 4] = SE_5_4 = new Room(true, goblin3 = new Monster (true, "Novka", "Goblin", false, null, "SE"), "SE", null, false, false);
+            array[5, 4] = SE_5_4 = new Room(true, goblin3 = new Monster (true, "Rovakk", "Goblin", false, null, "SE"), "SE", null, false, false);
             array[5, 5] = SE_5_5 = new Room(true, banshee1 = new Monster(true, "R'vaj", "Banshee", true, "hp", "SE"), "SE", null, false, false);
             array[5, 6] = wall;
 
@@ -148,6 +146,29 @@ namespace CIS129FinalProject
             array[6, 5] = wall;
             array[6, 6] = wall;
 
+
+            //Monster List
+            monsterList = new List<Monster>();
+            monsterList.Add(goblin1);
+            monsterList.Add(goblin2);
+            monsterList.Add(goblin3);
+            monsterList.Add(goblin4);
+            monsterList.Add(goblin5);
+            monsterList.Add(goblin6);
+            monsterList.Add(goblin7);
+            monsterList.Add(goblin8);
+
+            monsterList.Add(orc1);
+            monsterList.Add(orc2);
+            monsterList.Add(orc3);
+            monsterList.Add(orc4);
+
+            monsterList.Add(banshee1);
+            monsterList.Add(banshee2);
+            monsterList.Add(banshee3);
+            monsterList.Add(banshee4);
+            monsterList.Add(banshee5);
+            monsterList.Add(banshee6);
 
             //Spawn Exit Randomly
             Random r = new Random();
@@ -185,13 +206,13 @@ namespace CIS129FinalProject
 
 
             playerPos = array[spawn1, spawn2];
-            
 
             wizertX_Coord = spawn1;
             wizertY_Coord = spawn2;
 
         }
 
+        //Testing Purposes
         public object GetPlayerPosition()
         {
             return wizertX_Coord + "," + wizertY_Coord;
@@ -216,7 +237,7 @@ namespace CIS129FinalProject
             }
         }
 
-        public void Move(string direction, object[,] array, ref bool victory, ref bool defeat, Room? room)
+        public void Move(string direction, object[,] array, ref bool victory, ref bool defeat, Room? room, ref bool allEnemiesDefeated)
         {
 
 
@@ -224,13 +245,7 @@ namespace CIS129FinalProject
             object currentArray;
             Monster monsterToFight;
             Monster deadMonster;
-            Room roomNextArray;
 
-
-            
-
-
-            Room tempRoom;
 
 
             if (victory == false || defeat == false)
@@ -244,12 +259,10 @@ namespace CIS129FinalProject
                 {
                     Console.Clear();
                     nextArray = array[wizertX_Coord + 1, wizertY_Coord];
-                    currentArray = array[wizertX_Coord, wizertY_Coord];
 
 
                     if (nextArray.Equals(wall))
                     {
-                        //isWall = true;
                         Console.WriteLine("You run into a wall. Despair and hopelessness sets in, but you push on.");
                         Console.WriteLine();
                     }
@@ -266,6 +279,7 @@ namespace CIS129FinalProject
                             {
                                 Console.WriteLine("Wizert escapes to daylight!");
                                 Console.WriteLine("But to flee...or seek vengeance?");
+                                Console.WriteLine();
                                 victory = true;
                                 Wizert.SetMP(200);
                                 Wizert.SetHP(100);
@@ -298,31 +312,30 @@ namespace CIS129FinalProject
 
                         Console.WriteLine("You move to the South");
 
-                        if (room.GetRoomType() == "NE")
+                        string switchStatement = room.GetRoomType();
+                        switch (switchStatement)
                         {
-                            Console.WriteLine(room.PrintNERoom());
-                        }
+                            case "NE":
+                                room.PrintNERoom();
+                                break;
 
-                        else if (room.GetRoomType() == "SE")
-                        {
-                            Console.WriteLine(room.PrintSERoom());
-                        }
+                            case "SE":
+                                room.PrintSERoom();
+                                break;
 
-                        else if (room.GetRoomType() == "SW")
-                        {
-                            Console.WriteLine(room.PrintSWRoom());
-                        }
+                            case "SW":
+                                room.PrintSWRoom();
+                                break;
 
-                        else if (room.GetRoomType() == "NW")
-                        {
-                            Console.WriteLine(room.PrintNWRoom());
-                        }
+                            case "NW":
+                                room.PrintNWRoom();
+                                break;
 
-                        else if (room.GetRoomType() == "Hall")
-                        {
-                            Console.WriteLine(room.PrintHallRoom());
+                            case "Hall":
+                                room.PrintHallRoom();
+                                break;
                         }
-
+                        
                         Console.WriteLine();
 
                         if (room.GetPotion() == true)
@@ -354,6 +367,7 @@ namespace CIS129FinalProject
 
                             Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
                             Console.WriteLine();
+                            monsterList.Remove(deadMonster);
                             if (monsterToFight.GetHasItem() == true)
                             {
                                 Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)} drops a potion!");
@@ -390,6 +404,7 @@ namespace CIS129FinalProject
                         {
                             Console.WriteLine("Wizert escapes to daylight!");
                             Console.WriteLine("But to flee...or seek vengeance?");
+                            Console.WriteLine();
                             victory = true;
                             Wizert.SetMP(200);
                             Wizert.SetHP(100);
@@ -423,28 +438,29 @@ namespace CIS129FinalProject
 
                     Console.WriteLine("You move to the East");
 
-                    if (room.GetRoomType() == "NE")
-                    {
-                        Console.WriteLine(room.PrintNERoom());
-                    }
 
-                    else if (room.GetRoomType() == "SE")
+                    string switchStatement = room.GetRoomType();
+                    switch (switchStatement)
                     {
-                        Console.WriteLine(room.PrintSERoom());
-                    }
+                        case "NE":
+                            room.PrintNERoom();
+                            break;
 
-                    else if (room.GetRoomType() == "SW")
-                    {
-                        Console.WriteLine(room.PrintSWRoom());
-                    }
+                        case "SE":
+                            room.PrintSERoom();
+                            break;
 
-                    else if (room.GetRoomType() == "NW")
-                    {
-                        Console.WriteLine(room.PrintNWRoom());
-                    }
-                    else if (room.GetRoomType() == "Hall")
-                    {
-                        Console.WriteLine(room.PrintHallRoom());
+                        case "SW":
+                            room.PrintSWRoom();
+                            break;
+
+                        case "NW":
+                            room.PrintNWRoom();
+                            break;
+
+                        case "Hall":
+                            room.PrintHallRoom();
+                            break;
                     }
 
                     Console.WriteLine();
@@ -475,6 +491,8 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
                         Console.WriteLine();
+                        monsterList.Remove(deadMonster);
+
 
                         if (monsterToFight.GetHasItem() == true)
                         {
@@ -510,6 +528,7 @@ namespace CIS129FinalProject
                         {
                             Console.WriteLine("Wizert escapes to daylight!");
                             Console.WriteLine("But to flee...or seek vengeance?");
+                            Console.WriteLine();
                             victory = true;
                             Wizert.SetMP(200);
                             Wizert.SetHP(100);
@@ -542,31 +561,31 @@ namespace CIS129FinalProject
                     room = (Room?)array[wizertX_Coord, wizertY_Coord];
                     Console.WriteLine("You move to the West");
 
-                    if (room.GetRoomType() == "NE")
-                    {
-                        Console.WriteLine(room.PrintNERoom());
-                    }
 
-                    else if (room.GetRoomType() == "SE")
+                    string switchStatement = room.GetRoomType();
+                    switch (switchStatement)
                     {
-                        Console.WriteLine(room.PrintSERoom());
-                    }
+                        case "NE":
+                            room.PrintNERoom();
+                            break;
 
-                    else if (room.GetRoomType() == "SW")
-                    {
-                        Console.WriteLine(room.PrintSWRoom());
-                    }
+                        case "SE":
+                            room.PrintSERoom();
+                            break;
 
-                    else if (room.GetRoomType() == "NW")
-                    {
-                        Console.WriteLine(room.PrintNWRoom());
-                    }
+                        case "SW":
+                            room.PrintSWRoom();
+                            break;
 
-                    else if (room.GetRoomType() == "Hall")
-                    {
-                        Console.WriteLine(room.PrintHallRoom());
-                    }
+                        case "NW":
+                            room.PrintNWRoom();
+                            break;
 
+                        case "Hall":
+                            room.PrintHallRoom();
+                            break;
+                    }
+                    
                     Console.WriteLine();
 
                     if (room.GetPotion() == true)
@@ -595,6 +614,8 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
                         Console.WriteLine();
+                        monsterList.Remove(deadMonster);
+
 
                         if (monsterToFight.GetHasItem() == true)
                         {
@@ -630,6 +651,7 @@ namespace CIS129FinalProject
                         {
                             Console.WriteLine("Wizert escapes to daylight!");
                             Console.WriteLine("But to flee...or seek vengeance?");
+                            Console.WriteLine();
                             victory = true;
                             Wizert.SetMP(200);
                             Wizert.SetHP(100);
@@ -663,31 +685,30 @@ namespace CIS129FinalProject
                     room = (Room?)array[wizertX_Coord, wizertY_Coord];
                     Console.WriteLine("You move to the North");
 
-                    if (room.GetRoomType() == "NE")
+                    string switchStatement = room.GetRoomType();
+                    switch (switchStatement)
                     {
-                        Console.WriteLine(room.PrintNERoom());
-                    }
+                        case "NE":
+                            room.PrintNERoom();
+                            break;
 
-                    else if (room.GetRoomType() == "SE")
-                    {
-                        Console.WriteLine(room.PrintSERoom());
-                    }
+                        case "SE":
+                            room.PrintSERoom();
+                            break;
 
-                    else if (room.GetRoomType() == "SW")
-                    {
-                        Console.WriteLine(room.PrintSWRoom());
-                    }
+                        case "SW":
+                            room.PrintSWRoom();
+                            break;
 
-                    else if (room.GetRoomType() == "NW")
-                    {
-                        Console.WriteLine(room.PrintNWRoom());
-                    }
+                        case "NW":
+                            room.PrintNWRoom();
+                            break;
 
-                    else if (room.GetRoomType() == "Hall")
-                    {
-                        Console.WriteLine(room.PrintHallRoom());
+                        case "Hall":
+                            room.PrintHallRoom();
+                            break;
                     }
-
+                    
                     Console.WriteLine();
 
                     if (room.GetPotion() == true)
@@ -716,6 +737,8 @@ namespace CIS129FinalProject
                     {
                         Console.WriteLine($"{deadMonster.GetName(deadMonster)} the {deadMonster.GetMonsterType(deadMonster)}'s corpse lays at your feet");
                         Console.WriteLine();
+                        monsterList.Remove(deadMonster);
+
 
                         if (monsterToFight.GetHasItem() == true)
                         {
@@ -725,6 +748,10 @@ namespace CIS129FinalProject
                         }
                     }
                 }
+            }
+            if (monsterList.Count() == 0)
+            {
+                allEnemiesDefeated = true;
             }
         }
     }

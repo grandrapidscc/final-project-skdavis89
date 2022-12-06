@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace CIS129FinalProject
 {
@@ -34,7 +30,6 @@ namespace CIS129FinalProject
             _hasPotion = hasPotion;
             _isWall = isWall;
         }
-
 
 
         public bool GetPotion()
@@ -105,30 +100,29 @@ namespace CIS129FinalProject
 
         }
 
-
-        public string PrintNWRoom()
+        public void PrintNWRoom()
         {
-            return "It sounds as if you are walking through water, but the substance feels much thicker...";
+            Console.WriteLine("It sounds as if you are walking through water, but the substance feels much thicker...");
         }
 
-        public string PrintNERoom()
+        public void PrintNERoom()
         {
-            return "The air smells fetid and the soft dirt below your feet feels like a freshly dug grave.";
+            Console.WriteLine("The air smells fetid and the soft dirt below your feet feels like a freshly dug grave.");
         }
 
-        public string PrintSWRoom()
+        public void PrintSWRoom()
         {
-            return "The room is so silent that you can hear your own breathing, a moment of respite\n...until you remember you are holding your breath.";
+            Console.WriteLine("The room is so silent that you can hear your own breathing, a moment of respite\n...until you remember you are holding your breath.");
         }
 
-        public string PrintSERoom()
+        public void PrintSERoom()
         {
-            return "A screeching sound is apparent, but you can not tell if it is near or echoing from a far away location.";
+            Console.WriteLine("A screeching sound is apparent, but you can not tell if it is near or echoing from a far away location.");
         }
 
-        public string PrintHallRoom()
+        public void PrintHallRoom()
         {
-            return "You feel ornate marble flooring under your feet, covered in a thick layer of dust and fur.";
+            Console.WriteLine("You feel ornate marble flooring under your feet, covered in a thick layer of dust and fur.");
         }
 
         public Monster GetMonster()

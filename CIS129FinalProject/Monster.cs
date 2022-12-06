@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace CIS129FinalProject
 {
@@ -11,6 +7,8 @@ namespace CIS129FinalProject
         private string _name;
         private string _monsterType;
         private int _maxHP;
+        private int _maxMP;
+        private int _currentMP;
         private int _currentHP;
         private bool _hasItem;
         private string _itemType;
@@ -55,11 +53,36 @@ namespace CIS129FinalProject
             _roomType = roomType;
         }
 
+        public Monster(string name, string monsterType, int hp, int mp)
+        {
+            _name = name;
+            _monsterType = monsterType;
+            _maxHP = hp;
+            _maxMP = mp;
+            _currentHP = hp;
+            _currentMP = mp;
+        }
+
 
 
         public int GetMaxHP ()
         {
             return _maxHP;
+        }
+
+        public int GetMaxMP ()
+        {
+            return _maxMP;
+        }
+
+        public int SetCurrentMP(int setMP)
+        {
+            return _currentMP = setMP;
+        }
+
+        public int GetCurrentMP ()
+        {
+            return _currentMP;
         }
 
         public bool GetHasItem ()
@@ -174,6 +197,7 @@ namespace CIS129FinalProject
         }
     }
 }
+
 
     
 
